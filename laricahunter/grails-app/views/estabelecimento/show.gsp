@@ -128,18 +128,18 @@
 			
 				<g:if test="${estabelecimentoInstance?.horaabertura}">
 				<li class="fieldcontain">
-					<span id="horaabertura-label" class="property-label"><g:message code="estabelecimento.horaabertura.label" default="Horaabertura" /></span>
+					<span id="horaabertura-label" class="property-label"><g:message code="estabelecimento.horaabertura.label" default="Hora de abertura" /></span>
 					
-						<span class="property-value" aria-labelledby="horaabertura-label"><g:formatDate date="${estabelecimentoInstance?.horaabertura}" /></span>
+						<span class="property-value" aria-labelledby="horaabertura-label"><g:formatDate date="${estabelecimentoInstance?.horaabertura}" type="time" style="SHORT" /></span>
 					
 				</li>
 				</g:if>
 			
 				<g:if test="${estabelecimentoInstance?.horafechamento}">
 				<li class="fieldcontain">
-					<span id="horafechamento-label" class="property-label"><g:message code="estabelecimento.horafechamento.label" default="Horafechamento" /></span>
+					<span id="horafechamento-label" class="property-label"><g:message code="estabelecimento.horafechamento.label" default="Hora de fechamento" /></span>
 					
-						<span class="property-value" aria-labelledby="horafechamento-label"><g:formatDate date="${estabelecimentoInstance?.horafechamento}" /></span>
+						<span class="property-value" aria-labelledby="horafechamento-label"><g:formatDate date="${estabelecimentoInstance?.horafechamento}" type="time" style="SHORT" /></span>
 					
 				</li>
 				</g:if>
