@@ -8,7 +8,7 @@ import grails.transaction.Transactional
 @Transactional(readOnly = true)
 class CardapioController {
 
-    static allowedMethods = [save: "POST", update: "PUT", delete: "DELETE"]
+    static allowedMethods = [save: "POST", update: "POST", delete: "DELETE"]
 
     def index(Integer max) {
         params.max = Math.min(max ?: 10, 100)
@@ -17,6 +17,13 @@ class CardapioController {
 
     def show(Cardapio cardapioInstance) {
         respond cardapioInstance
+    }
+
+    @Secured(['permitAll'])
+    def image() {
+        def something = Cardapio.get( params.id )
+        byte[] image = something.avatar
+        response.outputStream << image
     }
 
     def create() {
@@ -47,28 +54,34 @@ class CardapioController {
         }
     }
 
-    def edit(Cardapio cardapioInstance) {
-        respond cardapioInstance
+    def edit(Cardapio params) {
+        respond params
     }
 
     @Transactional
-    def update(Cardapio cardapioInstance) {
-        if (cardapioInstance == null) {
+    def update() {
+        /*if (params == null) {
             notFound()
             return
         }
 
-        if (cardapioInstance.hasErrors()) {
-            respond cardapioInstance.errors, view:'edit'
+        if (params.hasErrors()) {
+            respond params.errors, view:'edit'
             return
-        }
+        }*/
+        def registro = Cardapio.get(params.id)
 
-        cardapioInstance.save flush:true
+        registro.preco = params.preco.toLong()
+        registro.descricao = params.descricao
+
+        //cardapioInstance.save flush:true
+        registro.save flush:true
 
         request.withFormat {
             form multipartForm {
-                flash.message = message(code: 'default.updated.message', args: [message(code: 'Cardapio.label', default: 'Cardapio'), cardapioInstance.id])
-                redirect cardapioInstance
+                flash.message = message(code: 'default.updated.message', args: [message(code: 'Cardapio.label', default: 'Cardapio'), registro.id])
+               // redirect cardapioInstance
+                redirect action:"index", method:"POST"
             }
             '*'{ respond cardapioInstance, [status: OK] }
         }
