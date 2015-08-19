@@ -51,7 +51,7 @@ class EstabelecimentoController {
 
     @Transactional
     def save(Estabelecimento estabelecimentoInstance) {
-        /*if (estabelecimentoInstance == null) {
+        if (estabelecimentoInstance == null) {
             notFound()
             return
         }
@@ -59,30 +59,15 @@ class EstabelecimentoController {
         if (estabelecimentoInstance.hasErrors()) {
             respond estabelecimentoInstance.errors, view:'create'
             return
-        }*/
-        def registro = Estabelecimento.get(params.id)
-        registro.preco = params.preco.toLong()
-        registro.cnpj = params.cnpj
-        registro.razaosocial = params.razaosocial
-        registro.nomefantasia = params.nomefantasia
-        registro.logradouro = params.logradouro
-        registro.numero = params.numero
-        registro.complemento = params.complemento
-        registro.bairro = params.bairro
-        registro.cep = params.cep
-        registro.fone1 = params.fone1
-        registro.fone2 = params.fone2
-        registro.fone3 = params.fone3
-        registro.horaabertura = params.horaabertura
-        registro.horafechamento = params.horafechamento
+        }
 
-        registro.save flush:true
+        estabelecimentoInstance.save flush:true
 
         request.withFormat {
             form multipartForm {
-                flash.message = message(code: 'default.created.message', args: [message(code: 'estabelecimentoInstance.label', default: 'Estabelecimento'), registro.id])
-                //redirect estabelecimentoInstance
-                redirect action:"index", method:"POST"
+                flash.message = message(code: 'default.created.message', args: [message(code: 'estabelecimentoInstance.label', default: 'Estabelecimento'), estabelecimentoInstance.id])
+                redirect estabelecimentoInstance
+
             }
             '*' { respond estabelecimentoInstance, [status: CREATED] }
         }
