@@ -44,7 +44,9 @@
 				<g:if test="${cardapioInstance?.avatar}">
 				<li class="fieldcontain">
 					<span id="avatar-label" class="property-label"><g:message code="cardapio.avatar.label" default="Avatar" /></span>
-					
+					<div class="property-value" aria-labelledby="imagem-label">
+						<img width="50" height="50" src="${createLink(controller:'cardapio', action:'image', id: cardapioInstance?.id)}"/>
+					</div>
 				</li>
 				</g:if>
 			

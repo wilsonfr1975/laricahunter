@@ -34,6 +34,13 @@ class HomeController {
         respond new Home(params)
     }
 
+    @Secured(['permitAll'])
+    def image() {
+        def something = Estabelecimento.get( params.id )
+        byte[] image = something.avatar
+        response.outputStream << image
+    }
+
     @Transactional
     def save(Home homeInstance) {
         if (homeInstance == null) {

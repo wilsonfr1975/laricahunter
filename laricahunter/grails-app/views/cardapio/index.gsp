@@ -46,7 +46,9 @@
 					
 						<td>${fieldValue(bean: cardapioInstance, field: "descricao")}</td>
 					
-						<td>${fieldValue(bean: cardapioInstance, field: "avatar")}</td>
+						<td>
+						<img width="50" height="50" src="${createLink(controller:'cardapio', action:'image', id: cardapioInstance?.id)}"/>
+						</td>
 					
 						<td>${fieldValue(bean: cardapioInstance, field: "categoria")}</td>
 					

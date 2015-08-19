@@ -67,7 +67,9 @@
 					<tr class="${(i % 2) == 0 ? 'even' : 'odd'}">
 
 						<td ><g:link style="font-size: small" action="show" controller="estabelecimento" id="${estabelecimentoInstance.id}">${fieldValue(bean: estabelecimentoInstance, field: "nomefantasia")}</g:link></td>
-
+						<td>
+							<img width="150" height="150" src="${createLink(controller:'estabelecimento', action:'image', id: estabelecimentoInstance?.id)}"/>
+						</td>
 					</tr>
 				</g:each>
 				<g:each in="${homeInstanceList}" status="i" var="homeInstance">
