@@ -1,257 +1,255 @@
 @CHARSET "UTF-8";
 
 body, h1, h2, h3, h4, h5, h6, p, ul, dl, ol, form, fieldset, input, label, table, tbody, tfoot, th, tr, td, textarea, select {
-font-family: "helvetica neue", helvetica, "lucinda sans unicode", "sans serif";
-font-weight: normal;
-color: #333;
-padding: 0;
-border: 0;
-margin: 0;
-font-size: 12px;
+    font-family: "helvetica neue", helvetica, "lucinda sans unicode", "sans serif";
+    font-weight: normal;
+
+    padding: 0;
+    border: 0;
+    margin: 0;
+    font-size: 12px;
 }
-
-
-header {
-	width:100%;
-	height:80px;
-	background:#d1e0e1;
-	color: #333;
-	font-weight: bold;
-	font-size: 20px;
-	text-align:center;
-	line-height: 80px;
-}
-
-#page-body p ,h2, h1{display: none;} 
-#controller-list ul{
-    padding:0px;
-	margin:0px;
-	background-color:#EDEDED;
-	list-style:none;
-        display: block;
-}
-#status{display: none;}
-table{
-    width:96%;
-   height:30px; 
-   font-size: 12px;
-   text-align:left;
-   line-height: 15px;
-   margin:20px;
-   padding-top: 10px;
-   border: 1px;
-    
-}
-table tr th{    
-   height:30px; 
-   background:#FFEB2B;
-   color: black;
-   padding-left: 10px;
-   text-align:left;
-}
-
-.scaffold-create{
-     width:96%;
-   height:60px; 
-   font-size: 12px;
-   text-align:left;
-   line-height: 18px;
-   margin:20px;
-   padding-top: 10px;
-   border: 1px;
-}
-.scaffold-create h1{font: bold sans-serif; font-size: 14px;}
-#grailsLogo{display: none;}
-.nav{
-  padding-top: 12px;
-  padding-bottom: 10px;
-   font-size: 20px;
-   text-align:left;
-   line-height: 18px;
-   margin-left: 20px;
-   border-bottom: 1px solid #888;
-   	padding:0px;
-	margin:0px;
-	background-color:#EDEDED;
-	list-style:none;
-}
-.create{font-size: 15px;
-   line-height: 30px;}
-.home{font-size: 15px;
-   line-height: 30px;}
-.scaffold-list h1{
-    padding-top: 30px;
-   text-align:left;
-   line-height: 18px;
-   margin-left: 20px;
-font-size: 20px;}
-.skip{display: none;}
-.scaffold-create input{width: 30%;}
-.many-to-one{width: 30%;height: 30px;}
-
-#horaabertura_day{width: 50px;height: 30px;}
-#horaabertura_month{width: 100px;height: 30px;}
-#horaabertura_year{width: 80px;height: 30px;}
-
-#horafechamento_day{width: 50px;height: 30px;}
-#horafechamento_month{width: 100px;height: 30px;}
-#horafechamento_year{width: 80px;height: 30px;}
-
-#avatar{width: 30%;height: 30px;}
-.buttons{
-   padding-top: 10px;
-width: 20%;
-border:  #FFEB2B;
-color: #FFEB2B;}
- 
-
- @CHARSET "UTF-8";
-
-body, h1, h2, h3, h4, h5, h6, p, ul, dl, ol, form, fieldset, input, label, table, tbody, tfoot, th, tr, td, textarea, select {
-font-family: "helvetica neue", helvetica, "lucinda sans unicode", "sans serif";
-font-weight: normal;
-color: #333;
-padding: 0;
-border: 0;
-margin: 0;
-font-size: 12px;
-}
-
-
-header {
-  width:100%;
-  height:80px;
-  background:#d1e0e1;
-  color: #333;
-  font-weight: bold;
-  font-size: 20px;
-  text-align:center;
-  line-height: 80px;
-}
-
 footer {
-   width:100%;
-   height:60px; 
-   background:#d1e0e1;
-   font-size: 12px;
-   text-align:center;
-   line-height: 80px;
-   margin-top:30px;
+    width:96%;
+    height:60px;
+    background:#d1e0e1;
+    font-size: 12px;
+    text-align:center;
+    line-height: 18px;
+    margin:20px;
+    padding-top: 10px;
 }
 
 table, th, td
 {
-border: 1px solid #888;
+    border: 1px solid #888;
 }
 
 section {
-  margin:20px 0 0 20px;
+    margin:20px 0 0 20px;
 }
 
 table {
-  width:90%;
-  border-collapse:collapse;
+    width:98%;
+    border-collapse:collapse;
 }
 
 thead {
-  line-height: 30px;
+    line-height: 30px;
 }
 
 thead th {
-  background: #53777a;
-  color: #fff;
-  font-size: 12px;
-  font-weight: bold;
-  text-align:center;
+    background: #53777a;
+    color: #fff;
+    font-size: 12px;
+    font-weight: bold;
+    text-align:center;
 }
 
 td {
-  font-size: 11px;
-  line-height: 25px;
-  padding-left: 10px;
+    font-size: 11px;
+    line-height: 25px;
+    padding-left: 10px;
 }
 
 .even {
-  background-color: #f8f8f8;
+    background-color: #f8f8f8;
 }
 
 nav {
-  margin:15px 0 10px 0;
+    margin:15px 0 10px 0;
 }
 
-nav a  {
-  background: #53777a;
-  color: #fff;
-  width: 80px;
-  text-decoration: none;
-  border: 1px solid #5b5b5b;
-  font-size: 13px;
-  text-align:  center;
-  padding:4px 10px;
-  height: 24px;
+nav a {
+    background: #53777a;
+    color: #fff;
+    width: 80px;
+    text-decoration: none;
+    border: 1px solid #5b5b5b;
+    font-size: 13px;
+    text-align:  center;
+    padding:5px 10px;
 }
 
-nav input   {
-  background: #53777a;
-  color: #fff;
-  width: 100px;
-  text-decoration: none;
-  border: 1px solid #5b5b5b;
-  font-size: 13px;
-  text-align:  center;
-  padding:5px 10px;
-  border-radius: 0px;
-  height: 24px;
-}
 label {
-  display: block;
-  padding: 8px 0 8px 0;
-  color: #333;
+    display: block;
+    padding: 8px 0 8px 0;
+    color: #333;
 }
 
 input {
-  border-radius: 3px;
-  height: 24px;
-  border: 1px solid #AAA;
-  padding: 0 7px;
+    border-radius: 3px;
+    height: 24px;
+    border: 1px solid #AAA;
+    padding: 0 7px;
+}
+header {
+    width:100%;
+    height:80px;
+    background:#d1e0e1;
+    color: #333;
+    font-weight: bold;
+    font-size: 20px;
+    text-align:center;
+    line-height: 80px;
 }
 
-input.large {
-  width: 400px;
+
+
+
+.scaffold-create{
+    width:96%;
+    height:60px;
+    font-size: 12px;
+    text-align:left;
+    line-height: 18px;
+    margin:20px;
+    padding-top: 10px;
+    border: 1px;
+    outline: 1px solid #333333;
+
 }
 
-select {
-  border: 1px solid #AAA;
-  overflow: hidden;
-  margin-right: 15px;
-  width: 200px;
+.form{
+    background:#F5F5F5;
+    padding:10px;}
+
+.scaffold-create h1{text-transform: uppercase;font: bold sans-serif; font-size: 23px;padding-bottom: 15px; 20px;padding-left: 20px;border-bottom: 1px solid #53777a;}
+.scaffold-create label{font-size: 14px;font-weight: bold;}
+.scaffold-create input {background: white;}
+
+.scaffold-edit h1{text-transform: uppercase;font: bold sans-serif; font-size: 23px;margin-bottom: 10px;padding-left: 20px;text-transform: uppercase;}
+.scaffold-edit form { background:#F5F5F5;padding:10px; margin: 10px; outline: 1px solid #333333;}
+.scaffold-edit label{font-size: 14px;font-weight: bold;}
+
+.scaffold-show h1{text-transform: uppercase;font: bold sans-serif; font-size: 23px;margin-bottom: 10px;padding-left: 20px;padding-top: 20px;}
+.scaffold-show label{font-size: 14px;font-weight: bold;}
+.scaffold-show input {background: white;}
+
+.save{margin: 20px;
+    text-transform: uppercase;
+    width: 10%;
+    border:1px solid  #5b5b5b;
+    color: black;
+    background: #FFB90B;
+    height: 30px;}
+
+
+.property-list  {width:96%;
+    height:60px;
+    font-size: 12px;
+    text-align:left;
+    line-height: 18px;
+    margin:20px;
+    padding-top: 10px;
+    border: 1px;
+    outline: 1px solid #333333;
+    list-style:none;
+}
+.property-label{font-size: 12px;font-weight: bold;padding-left: 15px;padding-right: 3px; line-height: 20px;}
+.delete{
+    text-transform: uppercase;
+    font-size: 14px;
+    border:1px solid  #5b5b5b;
+    color: black;
+    background: #FFB90B;
+    height: 30px;}
+.edit{
+    text-transform: uppercase;
+    margin: 20px;
+    width: 10px;
+    font-size: 14px;
+    border:1px solid  #5b5b5b;
+    padding: 5px;
+    background: #FFB90B;
+    height: 30px;}
+.sortable a{color: #5b5b5b;}
+.scaffold-list h1{
+    text-transform: uppercase;
+    padding: 20px;
+    text-align:left;
+    line-height: 18px;
+    margin-left: 20px;
+    font-size: 20px;
+    color: #A94442;}
+table{width: 95%; margin-left: 30px;}
+table tr th{
+    height:30px;
+    color: black;
+    padding-left: 10px;
+    text-align:left;
+    background: white;
+
 }
 
-.required {
-  color: red;
+#grailsLogo{display: none;}
+
+.create{font-size: 15px;
+    line-height: 30px;}
+.home{font-size: 15px;
+    line-height: 30px;}
+
+.skip{display: none;}
+.scaffold-create input{width: 30%;}
+.many-to-one{width: 30%;height: 30px;background: white; border: 1px solid #AAAAAA;}
+
+#horaabertura_day{width: 50px;height: 30px;background: white; border: 1px solid #AAAAAA; }
+#horaabertura_month{width: 100px;height: 30px;background: white;border: 1px solid #AAAAAA;}
+#horaabertura_year{width: 80px;height: 30px;background: white;border: 1px solid #AAAAAA;}
+
+#horafechamento_day{width: 50px;height: 30px;background: white;border: 1px solid #AAAAAA;}
+#horafechamento_month{width: 100px;height: 30px;background: white;border: 1px solid #AAAAAA;}
+#horafechamento_year{width: 80px;height: 30px;background: white;border: 1px solid #AAAAAA;}
+
+#avatar{width: 30%;height: 30px;background: white; border: 1px solid #AAAAAA;}
+#create{
+    text-transform: uppercase;
+    margin: 20px;
+    width: 10%;
+    font-size: 14px;
+    border:1px solid  #5b5b5b;
+    color: black;
+    background: #FFB90B;
+    height: 30px;}
+.buttons{background:#F5F5F5; }
+a:link {
+    text-decoration: none;
+
 }
 
-.not {
-  display:none; 
+a:visited {
+    text-decoration: none;
 }
 
-.rowHighlight {
-  font-weight:bold;
-} 
-
-label.error {
-  color: red;
-            font-weight:bold;
+a:hover {
+    text-decoration: underline;
 }
 
-.overdue {
-  background: #F7DCE5;
+a:active {
+    text-decoration: underline;
 }
+.nav ul  {
+    padding:0px;
+    margin:0px;
+    list-style:none;
+    padding-left: 10px;
+    height: 40px;
+    padding-top: 15px;
 
-.warning {
-  background: #F7F7DC;
 }
-
-.taskCompleted {
-  text-decoration: line-through;
+.nav ul li { display: inline; padding-left: 10px;}
+.nav ul li a { border: 0px solid #53777a;padding: 5px;background: #FFB90B; text-transform: uppercase;font-size: 14px;}
+.nav{
+    padding-top: 12px;
+    padding-bottom: 10px;
+    font-size: 20px;
+    text-align:left;
+    line-height: 18px;
+    margin-left: 20px;
+    border-bottom: 1px solid #888;
+    padding:0px;
+    margin:0px;
+    background: #FFB90B;
+    list-style:none;
 }
+ 

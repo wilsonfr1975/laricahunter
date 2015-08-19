@@ -32,9 +32,9 @@
 				</sec:ifAllGranted>
 
 				<sec:ifNotLoggedIn>
-					<div>
+
 						<li><span><g:link class="login" controller='login' action='auth'>Login</g:link></span></li>
-					</div>
+
 				</sec:ifNotLoggedIn>
 			<sec:ifLoggedIn>
 				<li><span style="font-size: x-small">Logado:<sec:loggedInUserInfo field="username"/></span></li>
@@ -64,6 +64,7 @@
 				</fieldset>
 
 				<g:each in="${estabelecimentoList}" status="i" var="estabelecimentoInstance">
+
 					<tr class="${(i % 2) == 0 ? 'even' : 'odd'}">
 
 						<td ><g:link style="font-size: small" action="show" controller="estabelecimento" id="${estabelecimentoInstance.id}">${fieldValue(bean: estabelecimentoInstance, field: "nomefantasia")}</g:link></td>
