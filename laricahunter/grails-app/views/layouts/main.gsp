@@ -14,6 +14,13 @@
 		<link rel="apple-touch-icon" sizes="114x114" href="${resource(dir: 'images', file: 'apple-touch-icon-retina.png')}">
 		<link rel="stylesheet" href="${resource(dir: 'css', file: 'css.css')}" type="text/css">
 		<link rel="stylesheet" href="${resource(dir: 'css', file: 'mobile.css')}" type="text/css">
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+		<script src="${resource(dir: 'js', file: 'geolocation.js')}"></script>
+		<script src="${resource(dir: 'js', file: 'js.cookie.js')}"></script>
+		<script src="${resource(dir: 'js', file: 'bootbox.min.js')}"></script>
+		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+		<script src="https://maps.googleapis.com/maps/api/js"></script>
 		<g:layoutHead/>
 		<g:javascript library="application"/>		
 		<r:layoutResources />

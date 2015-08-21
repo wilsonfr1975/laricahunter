@@ -103,19 +103,19 @@
 
 <div class="fieldcontain ${hasErrors(bean: estabelecimentoInstance, field: 'horaabertura', 'error')} required">
 	<label for="horaabertura">
-		<g:message code="estabelecimento.horaabertura.label" default="Hora de abertura" />
+		<g:message code="estabelecimento.horaabertura.label" default="Horaabertura" />
 		<span class="required-indicator">*</span>
 	</label>
-	<g:datePicker name="horaabertura" precision="-minute"  value="${estabelecimentoInstance?.horaabertura}"  />
+	<g:datePicker name="horaabertura" precision="day"  value="${estabelecimentoInstance?.horaabertura}"  />
 
 </div>
 
 <div class="fieldcontain ${hasErrors(bean: estabelecimentoInstance, field: 'horafechamento', 'error')} required">
 	<label for="horafechamento">
-		<g:message code="estabelecimento.horafechamento.label" default="Hora de fechamento" />
+		<g:message code="estabelecimento.horafechamento.label" default="Horafechamento" />
 		<span class="required-indicator">*</span>
 	</label>
-	<g:datePicker name="horafechamento" precision="-minute"  value="${estabelecimentoInstance?.horafechamento}"  />
+	<g:datePicker name="horafechamento" precision="day"  value="${estabelecimentoInstance?.horafechamento}"  />
 
 </div>
 
