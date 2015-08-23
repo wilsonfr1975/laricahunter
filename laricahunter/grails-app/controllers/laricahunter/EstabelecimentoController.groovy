@@ -23,9 +23,13 @@ class EstabelecimentoController {
         def estabelecimentoList = Estabelecimento.createCriteria().list(params) {
             if ( params.query ) {
                 ilike("nomefantasia", "%${params.query}%")
-            }else{
-                order('nomefantasia', 'asc')
             }
+            if ( params.cidade ) {
+                municipio {
+                    ilike("nome", "%${params.cidade}%")
+                }
+            }
+            order('nomefantasia', 'asc')
         }
         //println estabelecimentoList
 

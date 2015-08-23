@@ -10,11 +10,20 @@ class CardapioController {
 
     static allowedMethods = [save: "POST", update: "POST", delete: "DELETE"]
 
+    @Secured(['permitAll']) 
     def index(Integer max) {
-        params.max = Math.min(max ?: 10, 100)
-        respond Cardapio.list(params), model:[cardapioInstanceCount: Cardapio.count()]
-    }
+        if (params.id != null){
+            Estabelecimento p = Estabelecimento.find { id == params.id }
+            params.max = Math.min(max ?: 10, 100)
+            respond Cardapio.findByEstabelecimento(p), model:[cardapioInstanceCount: Cardapio.count()]
+        }else{
+            params.max = Math.min(max ?: 10, 100)
+            respond Cardapio.list(params), model:[cardapioInstanceCount: Cardapio.count()]
+        }
 
+
+    }
+    @Secured(['permitAll'])    
     def show(Cardapio cardapioInstance) {
         respond cardapioInstance
     }

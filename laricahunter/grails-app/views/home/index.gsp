@@ -9,10 +9,10 @@
 	</head>
 	<body>
 		<a href="#list-home" class="skip" tabindex="-1"><g:message code="default.link.skip.label" default="Skip to content&hellip;"/></a>
-	<div class="nav" role="navigation">
-
+	<nav class="navbar navbar-inverse navbar-fixed-top" role="navigation" style="background:#FFB90B; padding-top:20px;">
 		<ul>
 				<li><a class="home" href="${createLink(uri: '/home')}"><g:message code="default.home.label"/></a></li>
+				<li><span id="pesquisando-em"></span>... <a id="city-search" href="${createLink(uri: '/home')}">Mudar Cidade!</a></li>
 				<sec:ifAllGranted roles="ROLE_ADMIN">
 				<li><a class="" href="${createLink(uri: '/estabelecimento')}">Estabelecimento</a></li>
 				<li><a class="" href="${createLink(uri: '/categoria')}">Categoria</a></li>
@@ -32,57 +32,63 @@
 				</sec:ifAllGranted>
 
 				<sec:ifNotLoggedIn>
-
+					<div>
 						<li><span><g:link class="login" controller='login' action='auth'>Login</g:link></span></li>
-
+					</div>
 				</sec:ifNotLoggedIn>
 			<sec:ifLoggedIn>
 				<li><span style="font-size: x-small">Logado:<sec:loggedInUserInfo field="username"/></span></li>
 			</sec:ifLoggedIn>
-</ul>
-</div>
-
-		<div id="list-home" class="content scaffold-list" role="main">
-			<h1><g:message code="default.list.label" args="[entityName]" /></h1>
-			<g:if test="${flash.message}">
-				<div class="message" role="status">${flash.message}</div>
-			</g:if>
-			<table>
-			<thead>
-					<tr>
-					
-					</tr>
-				</thead>
-				<tbody>
-				<fieldset class="form">
-					<g:form controller="Estabelecimento" action="list" method="GET">
-						<div class="fieldcontain">
-							<label for="query">Busca:</label>
-							<g:textField name="query" value="${params.query}" placeholder="Por Estabelecimento"/>
+		</ul>
+	</nav>
+		<div id="list-home" class="container" style="margin-top:150px;">
+				<div class="well" style="outline: 1px solid #333333; background:#F5F5F5;">
+                	<center>
+                		<h3 style="padding-bottom:10px;">ÁREA DE BUSCA</h3>
+                	</center>
+                	<g:form accept-charset="UTF-8" controller="Estabelecimento" action="list" method="GET" name="search-form">
+                		<div style="display:none">
+                			<input name="utf8" type="hidden" value="&#x2713;" />
+                		</div>
+                		<div class="input-group" style="width: 100%;height:50px;text-align: center;">
+                    		<input class="form-control" id="search" name="search" placeholder="Busca por Estabelecimento ou prato" style="height:50px;text-align: center;" type="text" />
+                    	</div>
+                        <br/>
+                        <center>
+                        	<input class="btn btn-warning" name="commit" style="width: 30%;height:50px; margin-top: 20px; outline: 1px solid #000;" type="submit" value="PESQUISAR" />
+                        </center>
+                    </g:form>
+            	</div>
+				<p></p>
+				<div class="row">
+					<g:each in="${estabelecimentoList}" status="i" var="estabelecimentoInstance">
+						<div class="col-md-4">
+							<div class="panel panel-default">
+								<div class="panel-heading">
+									<h3><g:link action="show" controller="estabelecimento" id="${estabelecimentoInstance.id}">${fieldValue(bean: estabelecimentoInstance, field: "nomefantasia")}</g:link></h3>
+								</div>
+								<div class="panel-body">
+									<center>
+										<p>
+											<g:link class="img-thumbnail" action="show" controller="estabelecimento" id="${estabelecimentoInstance.id}"><img width="150" height="150" src="${createLink(controller:'estabelecimento', action:'image', id: estabelecimentoInstance?.id)}"/> </g:link>
+										</p>
+										<h5><strong>${estabelecimentoInstance.fone1}</strong></h5>
+										<g:link class="btn btn-warning" action="index" controller="cardapio" id="${estabelecimentoInstance.id}">Ver Cardápio</g:link>
+										<br>
+										<h10><strong>Endereço: ${estabelecimentoInstance.logradouro} - ${estabelecimentoInstance.numero} - CEP: ${estabelecimentoInstance.cep}</strong></h10>
+										<br>
+										<h10><strong>Atendimento: <g:formatDate date="${estabelecimentoInstance?.horaabertura}" type="time" style="SHORT"/> até <g:formatDate date="${estabelecimentoInstance?.horafechamento}" type="time" style="SHORT"/></strong></h10>
+									</center>
+								</div>	
+							</div>
 						</div>
-					</g:form>
-				</fieldset>
-
-				<g:each in="${estabelecimentoList}" status="i" var="estabelecimentoInstance">
-
-					<tr class="${(i % 2) == 0 ? 'even' : 'odd'}">
-
-						<td ><g:link style="font-size: small" action="show" controller="estabelecimento" id="${estabelecimentoInstance.id}">${fieldValue(bean: estabelecimentoInstance, field: "nomefantasia")}</g:link></td>
-						<td>
-					<g:link style="font-size: small" action="show" controller="estabelecimento" id="${estabelecimentoInstance.id}"><img width="150" height="150" src="${createLink(controller:'estabelecimento', action:'image', id: estabelecimentoInstance?.id)}"/> </g:link>
-						</td>
-					</tr>
-				</g:each>
+					</g:each>
+				</div>
 				<g:each in="${homeInstanceList}" status="i" var="homeInstance">
-					<tr class="${(i % 2) == 0 ? 'even' : 'odd'}">
-					
-					</tr>
 				</g:each>
-				</tbody>
-			</table>
-			<div class="pagination">
-				<g:paginate total="${homeInstanceCount ?: 0}" />
-			</div>
+				<div class="pagination">
+					<g:paginate total="${homeInstanceCount ?: 0}" />
+				</div>
 		</div>
 	</body>
 </html>
