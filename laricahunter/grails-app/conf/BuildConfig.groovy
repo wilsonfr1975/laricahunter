@@ -50,6 +50,7 @@ grails.project.dependency.resolution = {
     dependencies {
         // specify dependencies here under either 'build', 'compile', 'runtime', 'test' or 'provided' scopes e.g.
         // runtime 'mysql:mysql-connector-java:5.1.24'
+        runtime 'postgresql:postgresql:8.4-702.jdbc3'
     }
 
     plugins {
@@ -63,8 +64,8 @@ grails.project.dependency.resolution = {
         compile ":spring-security-core:2.0-RC5"
         compile ":famfamfam:1.0.1"
         compile ":calendar:1.2.1"
-        //compile ":heroku:1.0.1"
-        //compile ":cloud-support:1.0.11"
+        compile ":heroku:1.0.1"
+        compile ":cloud-support:1.0.11"
 
         // plugins needed at runtime but not for compilation
         runtime ":hibernate:3.6.10.6" // or ":hibernate4:4.1.11.6"
