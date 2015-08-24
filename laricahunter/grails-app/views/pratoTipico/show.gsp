@@ -8,16 +8,36 @@
 		<title><g:message code="default.show.label" args="[entityName]" /></title>
 	</head>
 	<body>
-		<a href="#show-pratoTipico" class="skip" tabindex="-1"><g:message code="default.link.skip.label" default="Skip to content&hellip;"/></a>
-		<div class="nav" role="navigation">
-			<ul>
-				<li><a class="home" href="${createLink(uri: '/home')}"><g:message code="default.home.label"/></a></li>
-				<li><g:link class="list" action="index"><g:message code="default.list.label" args="[entityName]" /></g:link></li>
-				<li><g:link class="create" action="create"><g:message code="default.new.label" args="[entityName]" /></g:link></li>
+	<nav class="navbar navbar-default">
+	  <div class="container-fluid">
+	    <div class="navbar-header">
+	      <a class="navbar-brand" href="#">Larica Hunter</a>
+	    </div>
+		<div >
+			<ul class="nav navbar-nav">
+				<li><a href="${createLink(uri: '/home')}"><g:message code="default.home.label"/></a></li>
+		        <sec:ifAllGranted roles="ROLE_ADMIN">
+					<li><a href="${createLink(uri: '/estabelecimento')}">Estabelecimento</a></li>
+					<li><a href="${createLink(uri: '/categoria')}">Categoria</a></li>
+					<li><a href="${createLink(uri: '/cardapio')}">Cardápio</a></li>
+					<li><a href="${createLink(uri: '/pratoTipico')}">PratoTipico</a></li>
+					<li><a href="${createLink(uri: '/produto')}">Produto</a></li>
+					<li><a href="${createLink(uri: '/municipio')}">Municipio</a></li>
+					<li><a href="${createLink(uri: '/uf')}">UF</a></li>
+					<li><a href="${createLink(uri: '/usuario')}">Usuário</a></li>
+					<li><a href="${createLink(uri: '/regra')}">Regra</a></li>
+					<li><a href="${createLink(uri: '/usuarioRegra')}">UsuarioRegra</a></li>
+					<li><a href="${createLink(controller: 'logout')}"> Logout</a></li>
+				</sec:ifAllGranted>
 			</ul>
 		</div>
-		<div id="show-pratoTipico" class="content scaffold-show" role="main">
+	   </div>
+	</nav>
+		<div id="show-pratoTipico" class="content scaffold-show" style="margin-left: 2%;" role="main">
 			<h1><g:message code="default.show.label" args="[entityName]" /></h1>
+			<g:link class="list"  style="margin-left: 20px;" action="index"><g:message code="default.list.label" args="[entityName]" /></g:link>
+			<g:link class="create" style="margin-left: 20px;" action="create"><g:message code="default.new.label" args="[entityName]" /></g:link>
+
 			<g:if test="${flash.message}">
 			<div class="message" role="status">${flash.message}</div>
 			</g:if>
@@ -25,7 +45,7 @@
 			
 				<g:if test="${pratoTipicoInstance?.municipio}">
 				<li class="fieldcontain">
-					<span id="municipio-label" class="property-label"><g:message code="pratoTipico.municipio.label" default="Municipio" /></span>
+					<span id="municipio-label" class="property-label"><g:message code="pratoTipico.municipio.label" default="Municipio" />: </span>
 					
 						<span class="property-value" aria-labelledby="municipio-label"><g:link controller="municipio" action="show" id="${pratoTipicoInstance?.municipio?.id}">${pratoTipicoInstance?.municipio?.encodeAsHTML()}</g:link></span>
 					
@@ -34,7 +54,7 @@
 			
 				<g:if test="${pratoTipicoInstance?.produto}">
 				<li class="fieldcontain">
-					<span id="produto-label" class="property-label"><g:message code="pratoTipico.produto.label" default="Produto" /></span>
+					<span id="produto-label" class="property-label"><g:message code="pratoTipico.produto.label" default="Produto" />: </span>
 					
 						<span class="property-value" aria-labelledby="produto-label"><g:link controller="produto" action="show" id="${pratoTipicoInstance?.produto?.id}">${pratoTipicoInstance?.produto?.encodeAsHTML()}</g:link></span>
 					

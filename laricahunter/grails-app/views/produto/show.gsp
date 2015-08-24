@@ -8,16 +8,35 @@
 		<title><g:message code="default.show.label" args="[entityName]" /></title>
 	</head>
 	<body>
-		<a href="#show-produto" class="skip" tabindex="-1"><g:message code="default.link.skip.label" default="Skip to content&hellip;"/></a>
-		<div class="nav" role="navigation">
-			<ul>
-				<li><a class="home" href="${createLink(uri: '/home')}"><g:message code="default.home.label"/></a></li>
-				<li><g:link class="list" action="index"><g:message code="default.list.label" args="[entityName]" /></g:link></li>
-				<li><g:link class="create" action="create"><g:message code="default.new.label" args="[entityName]" /></g:link></li>
+	<nav class="navbar navbar-default">
+	  <div class="container-fluid">
+	    <div class="navbar-header">
+	      <a class="navbar-brand" href="#">Larica Hunter</a>
+	    </div>
+		<div >
+			<ul class="nav navbar-nav">
+				<li><a href="${createLink(uri: '/home')}"><g:message code="default.home.label"/></a></li>
+		        <sec:ifAllGranted roles="ROLE_ADMIN">
+					<li><a href="${createLink(uri: '/estabelecimento')}">Estabelecimento</a></li>
+					<li><a href="${createLink(uri: '/categoria')}">Categoria</a></li>
+					<li><a href="${createLink(uri: '/cardapio')}">Cardápio</a></li>
+					<li><a href="${createLink(uri: '/pratoTipico')}">PratoTipico</a></li>
+					<li><a href="${createLink(uri: '/produto')}">Produto</a></li>
+					<li><a href="${createLink(uri: '/municipio')}">Municipio</a></li>
+					<li><a href="${createLink(uri: '/uf')}">UF</a></li>
+					<li><a href="${createLink(uri: '/usuario')}">Usuário</a></li>
+					<li><a href="${createLink(uri: '/regra')}">Regra</a></li>
+					<li><a href="${createLink(uri: '/usuarioRegra')}">UsuarioRegra</a></li>
+					<li><a href="${createLink(controller: 'logout')}"> Logout</a></li>
+				</sec:ifAllGranted>
 			</ul>
 		</div>
-		<div id="show-produto" class="content scaffold-show" role="main">
+	   </div>
+	</nav>
+		<div id="show-produto" class="content scaffold-show" style="margin-left: 2%;" role="main">
 			<h1><g:message code="default.show.label" args="[entityName]" /></h1>
+			<g:link class="list"  style="margin-left: 20px;" action="index"><g:message code="default.list.label" args="[entityName]" /></g:link>
+			<g:link class="create"  style="margin-left: 20px;" action="create"><g:message code="default.new.label" args="[entityName]" /></g:link>
 			<g:if test="${flash.message}">
 			<div class="message" role="status">${flash.message}</div>
 			</g:if>
@@ -25,7 +44,7 @@
 			
 				<g:if test="${produtoInstance?.nome}">
 				<li class="fieldcontain">
-					<span id="nome-label" class="property-label"><g:message code="produto.nome.label" default="Nome" /></span>
+					<span id="nome-label" class="property-label"><g:message code="produto.nome.label" default="Nome" />: </span>
 					
 						<span class="property-value" aria-labelledby="nome-label"><g:fieldValue bean="${produtoInstance}" field="nome"/></span>
 					
@@ -34,7 +53,7 @@
 			
 				<g:if test="${produtoInstance?.categoria}">
 				<li class="fieldcontain">
-					<span id="categoria-label" class="property-label"><g:message code="produto.categoria.label" default="Categoria" /></span>
+					<span id="categoria-label" class="property-label"><g:message code="produto.categoria.label" default="Categoria" />: </span>
 					
 						<span class="property-value" aria-labelledby="categoria-label"><g:link controller="categoria" action="show" id="${produtoInstance?.categoria?.id}">${produtoInstance?.categoria?.encodeAsHTML()}</g:link></span>
 					

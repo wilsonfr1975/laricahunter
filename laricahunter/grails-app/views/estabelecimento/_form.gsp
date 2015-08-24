@@ -106,7 +106,7 @@
 		<g:message code="estabelecimento.horaabertura.label" default="Horaabertura" />
 		<span class="required-indicator">*</span>
 	</label>
-	<g:datePicker name="horaabertura" precision="day"  value="${estabelecimentoInstance?.horaabertura}"  />
+	<g:datePicker name="horaabertura" precision="minute"  value="${estabelecimentoInstance?.horaabertura}"  />
 
 </div>
 
@@ -115,7 +115,7 @@
 		<g:message code="estabelecimento.horafechamento.label" default="Horafechamento" />
 		<span class="required-indicator">*</span>
 	</label>
-	<g:datePicker name="horafechamento" precision="day"  value="${estabelecimentoInstance?.horafechamento}"  />
+	<g:datePicker name="horafechamento" precision="minute"  value="${estabelecimentoInstance?.horafechamento}"  />
 
 </div>
 

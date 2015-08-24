@@ -12,16 +12,17 @@ class CardapioController {
 
     @Secured(['permitAll']) 
     def index(Integer max) {
+        
+        
         if (params.id != null){
             Estabelecimento p = Estabelecimento.find { id == params.id }
             params.max = Math.min(max ?: 10, 100)
-            respond Cardapio.findByEstabelecimento(p), model:[cardapioInstanceCount: Cardapio.count()]
-        }else{
+            respond Cardapio.findAllByEstabelecimento(p), model:[cardapioInstanceCount: Cardapio.count()]                        
+        }   
+        else{
             params.max = Math.min(max ?: 10, 100)
             respond Cardapio.list(params), model:[cardapioInstanceCount: Cardapio.count()]
         }
-
-
     }
     @Secured(['permitAll'])    
     def show(Cardapio cardapioInstance) {

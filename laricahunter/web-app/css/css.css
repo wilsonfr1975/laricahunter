@@ -118,17 +118,18 @@ header {
     height: 30px;}
 
 
-.property-list  {width:96%;
-    height:60px;
-    font-size: 12px;
+.property-list  {
+    width:96%;
+    font-size: 14px;
     text-align:left;
     line-height: 18px;
-    margin:20px;
     padding-top: 10px;
+    padding-top: 15px;
     border: 1px;
     outline: 1px solid #333333;
     list-style:none;
 }
+
 .property-label{font-size: 12px;font-weight: bold;padding-left: 15px;padding-right: 3px; line-height: 20px;}
 .delete{
     text-transform: uppercase;
@@ -230,5 +231,11 @@ a:active {
 #listagem {margin-top: 10px;}
 
 .fieldcontain{
-  padding-top: 18px;
+  margin-left : 20px;
 }
+
+.fieldcontain property-value {
+  margin-left : 16px;
+}
+
+
