@@ -65,6 +65,6 @@ $(document).ready(function() {
         });
     }
     else {
-        $("#pesquisando-em").text("PESQUISANDO EM: " + cookie);
+        $("#city-search").html("Cidade: " + cookie + ". Alterar?");
     }
 });

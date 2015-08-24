@@ -1,4 +1,3 @@
-
 <%@ page import="laricahunter.Home" %>
 <!DOCTYPE html>
 <html>
@@ -8,41 +7,41 @@
 		<title><g:message code="default.list.label" args="[entityName]" /></title>
 	</head>
 	<body>
-		<a href="#list-home" class="skip" tabindex="-1"><g:message code="default.link.skip.label" default="Skip to content&hellip;"/></a>
-	<nav class="navbar navbar-inverse navbar-fixed-top" role="navigation" style="background:#FFB90B; padding-top:20px;">
-		<ul>
-				<li><a class="home" href="${createLink(uri: '/home')}"><g:message code="default.home.label"/></a></li>
-				<li><span id="pesquisando-em"></span>... <a id="city-search" href="${createLink(uri: '/home')}">Mudar Cidade!</a></li>
-				<sec:ifAllGranted roles="ROLE_ADMIN">
-				<li><a class="" href="${createLink(uri: '/estabelecimento')}">Estabelecimento</a></li>
-				<li><a class="" href="${createLink(uri: '/categoria')}">Categoria</a></li>
-				<li><a class="" href="${createLink(uri: '/cardapio')}">Cardápio</a></li>
-				<li><a class="" href="${createLink(uri: '/pratoTipico')}">PratoTipico</a></li>
-				<li><a class="" href="${createLink(uri: '/produto')}">Produto</a></li>
-				<li><a class="" href="${createLink(uri: '/municipio')}">Municipio</a></li>
-				<li><a class="" href="${createLink(uri: '/uf')}">UF</a></li>
-				<li><a class="" href="${createLink(uri: '/usuario')}">Usuário</a></li>
-				<li><a class="" href="${createLink(uri: '/regra')}">Regra</a></li>
-				<li><a class="" href="${createLink(uri: '/usuarioRegra')}">UsuarioRegra</a></li>
-				<li><a href="${createLink(controller: 'logout')}"> Logout</a></li>
-				</sec:ifAllGranted>
-				<sec:ifAllGranted roles="ROLE_USER">
-					<li><a class="" href="${createLink(uri: '/cardapio')}">Cardápio</a></li>
+	<nav class="navbar navbar-default">
+	  <div class="container-fluid">
+	    <div class="navbar-header">
+	      <a class="navbar-brand" href="#">Larica Hunter</a>
+	    </div>
+	    <div>
+	     	<ul class="nav navbar-nav">
+		        <li><a href="${createLink(uri: '/home')}"><g:message code="default.home.label"/></a></li>
+		        <sec:ifAllGranted roles="ROLE_ADMIN">
+					<li><a href="${createLink(uri: '/estabelecimento')}">Estabelecimento</a></li>
+					<li><a href="${createLink(uri: '/categoria')}">Categoria</a></li>
+					<li><a href="${createLink(uri: '/cardapio')}">Cardápio</a></li>
+					<li><a href="${createLink(uri: '/pratoTipico')}">PratoTipico</a></li>
+					<li><a href="${createLink(uri: '/produto')}">Produto</a></li>
+					<li><a href="${createLink(uri: '/municipio')}">Municipio</a></li>
+					<li><a href="${createLink(uri: '/uf')}">UF</a></li>
+					<li><a href="${createLink(uri: '/usuario')}">Usuário</a></li>
+					<li><a href="${createLink(uri: '/regra')}">Regra</a></li>
+					<li><a href="${createLink(uri: '/usuarioRegra')}">UsuarioRegra</a></li>
 					<li><a href="${createLink(controller: 'logout')}"> Logout</a></li>
 				</sec:ifAllGranted>
-
+				<sec:ifAllGranted roles="ROLE_USER">
+					<li><a href="${createLink(uri: '/cardapio')}">Cardápio</a></li>
+					<li><a href="${createLink(controller: 'logout')}"> Logout</a></li>
+				</sec:ifAllGranted>
 				<sec:ifNotLoggedIn>
-					<div>
-						<li><span><g:link class="login" controller='login' action='auth'>Login</g:link></span></li>
-					</div>
+					<li><g:link controller='login' action='auth'>Login</g:link></li>
 				</sec:ifNotLoggedIn>
-			<sec:ifLoggedIn>
-				<li><span style="font-size: x-small">Logado:<sec:loggedInUserInfo field="username"/></span></li>
-			</sec:ifLoggedIn>
-		</ul>
+				<li><a id="city-search" href="${createLink(uri: '/home')}">Pesquisando em...</a></li>
+	      	</ul>
+	    </div>
+	  </div>
 	</nav>
-		<div id="list-home" class="container" style="margin-top:150px;">
-				<div class="well" style="outline: 1px solid #333333; background:#F5F5F5;">
+		<div id="list-home" class="container" style="margin-top:50px;">
+				<div class="well" background:#F5F5F5;">
                 	<center>
                 		<h3 style="padding-bottom:10px;">ÁREA DE BUSCA</h3>
                 	</center>
