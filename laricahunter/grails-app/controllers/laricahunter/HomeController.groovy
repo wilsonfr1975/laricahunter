@@ -14,14 +14,91 @@ class HomeController {
     static allowedMethods = [save: "POST", update: "PUT", delete: "DELETE"]
 
     def index(Integer max) {
-        params.max = Math.min(max ?: 10, 100)
+       params.max = Math.min(max ?: 10, 100)
+       
+       def listaEstabelecimento = null
+       def cardapioList = null
+      
+       if (params.city != null){
+            Municipio municipio = Municipio.find { nome == params.city }
+            listaEstabelecimento =  Estabelecimento.findAllByMunicipio(municipio)            
 
-        Municipio municipio = Municipio.find { nome == params.city }
-        def lista =  Estabelecimento.findAllByMunicipio(municipio)
+            def listaPratoTipico  = PratoTipico.findAllByMunicipio(municipio)  
+
+            def idsProdutos  = [] 
+            listaPratoTipico.each {
+                idsProdutos.push("${it.produto.id}" as long)            
+            }   
+
+            cardapioList = Cardapio.createCriteria().list() {            
+                if(idsProdutos){
+                    produto {
+                        'in'("id", idsProdutos)    
+                    }                    
+                }                                           
+                order('descricao', 'desc')
+            }
+
+       } else{
+           //Tras todos
+           
+            listaEstabelecimento =  Estabelecimento.list() 
+            
+            def listaPratoTipico  = PratoTipico.findAll()  
+
+            def idsProdutos  = [] 
+            listaPratoTipico.each {
+                idsProdutos.push("${it.produto.id}" as long)            
+            }   
+
+            cardapioList = Cardapio.createCriteria().list() {            
+                if(idsProdutos){
+                    produto {
+                        'in'("id", idsProdutos)    
+                    }                    
+                }                                           
+                order('descricao', 'desc')
+            }
+       }
+
+       render (view:"/home/index", model:[estabelecimentoList: listaEstabelecimento, cardapioList: cardapioList])
         
-        render (view:"/home/index", model:[estabelecimentoList: lista])
     }
 
+    @Secured('permitAll')
+    def list(){
+               
+        def cardapios = Cardapio.createCriteria().list(params) {
+            if ( params.search ) {
+                ilike("descricao", "%${params.search}%")                              
+            }
+        }        
+        
+        def ids  = [] 
+        cardapios.each {
+            ids.push("${it.estabelecimento.id}" as long)            
+        }
+
+
+        def estabelecimentoList = Estabelecimento.createCriteria().list(params) {            
+            if(ids){
+                'in'("id", ids)    
+            }
+            else if ( params.search ) {
+                ilike("nomefantasia", "%${params.search}%")
+            }
+            
+            if ( params.city ) {
+                municipio {
+                    ilike("nome", "%${params.city}%")
+                }
+            } 
+                       
+            order('nomefantasia', 'desc')
+        }
+        
+        render (view:"/home/index", model:[estabelecimentoList: estabelecimentoList])
+    }
 
     def show(Home homeInstance) {
         respond homeInstance

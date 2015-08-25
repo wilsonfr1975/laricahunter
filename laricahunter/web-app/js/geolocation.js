@@ -6,7 +6,8 @@ $(document).ready(function() {
     });
     
     $("#home-link").click(function() {
-        window.location.assign("/laricahunter");
+        var cookie = Cookies.get('city');
+        window.location.assign("/home/index?city="+cookie);
     });
 
     $("#search-form").submit(function(eventObj) {

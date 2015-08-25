@@ -14,7 +14,7 @@
 	    </div>
 	    <div>
 	     	<ul class="nav navbar-nav">
-		        <li><a href="${createLink(uri: '/home')}"><g:message code="default.home.label"/></a></li>
+		        <li><a id="home-link" href="#"><g:message code="default.home.label"/></a></li>
 		        <sec:ifAllGranted roles="ROLE_ADMIN">
 					<li><a href="${createLink(uri: '/estabelecimento')}">Estabelecimento</a></li>
 					<li><a href="${createLink(uri: '/categoria')}">Categoria</a></li>
@@ -45,7 +45,7 @@
                 	<center>
                 		<h3 style="padding-bottom:10px;">ÁREA DE BUSCA</h3>
                 	</center>
-                	<g:form accept-charset="UTF-8" controller="Estabelecimento" action="list" method="GET" name="search-form">
+                	<g:form accept-charset="UTF-8" controller="home" action="list" method="GET" name="search-form">
                 		<div style="display:none">
                 			<input name="utf8" type="hidden" value="&#x2713;" />
                 		</div>
@@ -83,11 +83,34 @@
 						</div>
 					</g:each>
 				</div>
+				<center>
+                		<h3 style="padding-bottom:10px;">Pratos Típicos</h3>
+                </center>				
+				<p></p>
+				<div class="row">
+					<g:each in="${cardapioList}" status="i" var="cardapioInstance">
+						<div class="col-md-4">
+							<div class="panel panel-default">
+								<div class="panel-heading">
+									<h3><g:link action="show" controller="home" id="${cardapioInstance.id}">${fieldValue(bean: cardapioInstance, field: "descricao")}</g:link></h3>
+								</div>
+								<div class="panel-body">
+									<center>
+										<p>
+											<g:link class="img-thumbnail" action="show" controller="home" id="${cardapioInstance.id}"><img width="150" height="150" src="${createLink(controller:'cardapio', action:'image', id: cardapioInstance?.id)}"/> </g:link>
+										</p>										
+									</center>
+								</div>	
+							</div>
+						</div>
+					</g:each>
+				</div>
 				<g:each in="${homeInstanceList}" status="i" var="homeInstance">
 				</g:each>
 				<div class="pagination">
 					<g:paginate total="${homeInstanceCount ?: 0}" />
 				</div>
 		</div>
+
 	</body>
 </html>

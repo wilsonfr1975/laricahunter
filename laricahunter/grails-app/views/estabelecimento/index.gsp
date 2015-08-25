@@ -16,7 +16,7 @@
 	    </div>
 		<div >
 			<ul class="nav navbar-nav">
-				<li><a href="${createLink(uri: '/home')}"><g:message code="default.home.label"/></a></li>
+				<li><a id="home-link" href="#"><g:message code="default.home.label"/></a></li>
 		        <sec:ifAllGranted roles="ROLE_ADMIN">
 					<li><a href="${createLink(uri: '/estabelecimento')}">Estabelecimento</a></li>
 					<li><a href="${createLink(uri: '/categoria')}">Categoria</a></li>
