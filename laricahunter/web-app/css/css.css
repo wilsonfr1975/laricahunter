@@ -121,15 +121,14 @@ header {
 
 
 .property-list {
-    width:96%;
     font-size: 14px;
     text-align:left;
     line-height: 18px;
-    padding-top: 10px;
     padding-top: 15px;
     border: 1px;
     outline: 1px solid #333333;
     list-style:none;
+    margin-left:0px;
 }
 
 .property-label{font-size: 12px;font-weight: bold;padding-left: 15px;padding-right: 3px; line-height: 20px;}
