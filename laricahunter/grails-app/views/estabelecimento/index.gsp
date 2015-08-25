@@ -36,8 +36,10 @@
 	</nav>
 		<div id="list-estabelecimento" class="content scaffold-list" role="main">
 			<h1><g:message code="default.list.label" args="[entityName]" /></h1>
-			<g:link class="list" style="margin-left: 20px;" action="index"><g:message code="default.list.label" args="[entityName]" /></g:link>
-			<g:link class="create" style="margin-left: 20px;" action="create"><g:message code="default.new.label" args="[entityName]" /></g:link>
+			<div class="links">
+				<g:link  action="index"><g:message code="default.list.label" args="[entityName]" /></g:link>
+				<g:link  action="create"><g:message code="default.new.label" args="[entityName]" /></g:link>
+			</div>
 			<g:if test="${flash.message}">
 				<div class="message" role="status">${flash.message}</div>
 			</g:if>

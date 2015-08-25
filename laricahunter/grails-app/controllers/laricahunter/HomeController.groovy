@@ -16,13 +16,10 @@ class HomeController {
     def index(Integer max) {
         params.max = Math.min(max ?: 10, 100)
 
-        def lista =  Estabelecimento.list()
-
-        println  lista
-        // respond estabelecimentoList , model:[estabelecimentoInstanceList: estabelecimentoList, estabelecimentoTotal: estabelecimentoList.totalCount]
-        // redirect action:"home/index", model:[estabelecimentoList: estabelecimentoList]
+        Municipio municipio = Municipio.find { nome == params.city }
+        def lista =  Estabelecimento.findAllByMunicipio(municipio)
+        
         render (view:"/home/index", model:[estabelecimentoList: lista])
-        //respond Estabelecimento.list(params), model:[EstabelecimentoInstanceCount: Estabelecimento.count()]
     }
 
 

@@ -4,7 +4,7 @@
 	<head>
 		<meta name="layout" content="main">
 		<g:set var="entityName" value="${message(code: 'home.label', default: 'Home')}" />
-		<title><g:message code="default.list.label" args="[entityName]" /></title>
+		<title>Larica Hunter - Grails</title>
 	</head>
 	<body>
 	<nav class="navbar navbar-default">

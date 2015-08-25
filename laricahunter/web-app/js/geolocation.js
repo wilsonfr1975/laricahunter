@@ -33,7 +33,7 @@ $(document).ready(function() {
                 }
                 else {
                     Cookies.set('city', result);
-                    window.location.assign("estabelecimento/list?city=" + result);
+                    window.location.assign("home/index?city=" + result);
                 }
             }
         });
