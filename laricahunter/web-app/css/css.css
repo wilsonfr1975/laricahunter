@@ -251,3 +251,11 @@ a:active {
     padding: 4px;
     border-radius: 3px;
 }
+
+.nav>li>a
+
+{
+    position: relative;
+    display: block;
+    padding: 11px;
+}
