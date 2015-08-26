@@ -27,6 +27,10 @@
 					<li><a href="${createLink(uri: '/usuarioRegra')}">UsuarioRegra</a></li>
 					<li><a href="${createLink(controller: 'logout')}"> Logout</a></li>
 				</sec:ifAllGranted>
+				<sec:ifAllGranted roles="ROLE_USER">
+					<li><a href="${createLink(uri: '/cardapio')}">Cardápio</a></li>
+					<li><a href="${createLink(controller: 'logout')}"> Logout</a></li>
+				</sec:ifAllGranted>
 				<li><a id="city-search" href="${createLink(uri: '/home')}">Pesquisando em...</a></li>
 			</ul>
 		</div>

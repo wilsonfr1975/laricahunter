@@ -105,7 +105,7 @@ header {
 
 .scaffold-show h1{text-transform: uppercase;font: bold sans-serif; color: #A94442; font-size: 19px;padding-bottom: 15px; padding-left: 20px;border-bottom: 1px solid #53777a;}
 .scaffold-show label{font-size: 14px;font-weight: bold;}
-.scaffold-show input {background: white;}
+
 
 .scaffold-list h1{text-transform: uppercase;font: bold sans-serif; color: #A94442; font-size: 19px;padding-bottom: 15px; padding-left: 20px;border-bottom: 1px solid #53777a;}
 .scaffold-list label{font-size: 14px;font-weight: bold;}
