@@ -14,8 +14,9 @@
 	    </div>
 	    <div>
 	     	<ul class="nav navbar-nav">
-		        <li><a id="home-link" href="#"><g:message code="default.home.label"/></a></li>
+		        
 		        <sec:ifAllGranted roles="ROLE_ADMIN">
+		        	<li><a href="${createLink(uri: '/home')}"><g:message code="default.home.label"/></a></li>
 					<li><a href="${createLink(uri: '/estabelecimento')}">Estabelecimento</a></li>
 					<li><a href="${createLink(uri: '/categoria')}">Categoria</a></li>
 					<li><a href="${createLink(uri: '/cardapio')}">Cardápio</a></li>
@@ -29,10 +30,12 @@
 					<li><a href="${createLink(controller: 'logout')}"> Logout</a></li>
 				</sec:ifAllGranted>
 				<sec:ifAllGranted roles="ROLE_USER">
+					<li><a id="home-link" href="#"><g:message code="default.home.label"/></a></li>
 					<li><a href="${createLink(uri: '/cardapio')}">Cardápio</a></li>
 					<li><a href="${createLink(controller: 'logout')}"> Logout</a></li>
 				</sec:ifAllGranted>
 				<sec:ifNotLoggedIn>
+					<li><a id="home-link" href="#"><g:message code="default.home.label"/></a></li>
 					<li><g:link controller='login' action='auth'>Login</g:link></li>
 				</sec:ifNotLoggedIn>
 				<li><a id="city-search" href="${createLink(uri: '/home')}">Pesquisando em...</a></li>
