@@ -16,7 +16,7 @@
 	     	<ul class="nav navbar-nav">
 		        
 		        <sec:ifAllGranted roles="ROLE_ADMIN">
-		        	<li><a href="${createLink(uri: '/home')}"><g:message code="default.home.label"/></a></li>
+		        	<li><a id="home-link" href="#"><g:message code="default.home.label"/></a></li>
 					<li><a href="${createLink(uri: '/estabelecimento')}">Estabelecimento</a></li>
 					<li><a href="${createLink(uri: '/categoria')}">Categoria</a></li>
 					<li><a href="${createLink(uri: '/cardapio')}">Cardápio</a></li>
@@ -87,7 +87,9 @@
 					</g:each>
 				</div>
 				<center>
-                		<h3 style="padding-bottom:10px;">Pratos Típicos</h3>
+						<g:if test="${cardapioList}"> 
+                			<h3 style="padding-bottom:10px;">Pratos Típicos</h3>
+                		</g:if>
                 </center>				
 				<p></p>
 				<div class="row">
@@ -95,12 +97,12 @@
 						<div class="col-md-4">
 							<div class="panel panel-default">
 								<div class="panel-heading">
-									<h3><g:link action="show" controller="home" id="${cardapioInstance.id}">${fieldValue(bean: cardapioInstance, field: "descricao")}</g:link></h3>
+									<h3><g:link action="show" controller="cardapio" id="${cardapioInstance.id}">${fieldValue(bean: cardapioInstance, field: "descricao")}</g:link></h3>
 								</div>
 								<div class="panel-body">
 									<center>
 										<p>
-											<g:link class="img-thumbnail" action="show" controller="home" id="${cardapioInstance.id}"><img width="150" height="150" src="${createLink(controller:'cardapio', action:'image', id: cardapioInstance?.id)}"/> </g:link>
+											<g:link class="img-thumbnail" action="show" controller="cardapio" id="${cardapioInstance.id}"><img width="150" height="150" src="${createLink(controller:'cardapio', action:'image', id: cardapioInstance?.id)}"/> </g:link>
 										</p>										
 									</center>
 								</div>	

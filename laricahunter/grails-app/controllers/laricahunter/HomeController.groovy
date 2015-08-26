@@ -18,7 +18,8 @@ class HomeController {
        
        def listaEstabelecimento = null
        def cardapioList = null
-      
+
+
        if (params.city != null){
             Municipio municipio = Municipio.find { nome == params.city }
             listaEstabelecimento =  Estabelecimento.findAllByMunicipio(municipio)            
@@ -44,21 +45,6 @@ class HomeController {
            
             listaEstabelecimento =  Estabelecimento.list() 
             
-            def listaPratoTipico  = PratoTipico.findAll()  
-
-            def idsProdutos  = [] 
-            listaPratoTipico.each {
-                idsProdutos.push("${it.produto.id}" as long)            
-            }   
-
-            cardapioList = Cardapio.createCriteria().list() {            
-                if(idsProdutos){
-                    produto {
-                        'in'("id", idsProdutos)    
-                    }                    
-                }                                           
-                order('descricao', 'desc')
-            }
        }
 
        render (view:"/home/index", model:[estabelecimentoList: listaEstabelecimento, cardapioList: cardapioList])
