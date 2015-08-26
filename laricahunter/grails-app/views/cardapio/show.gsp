@@ -30,10 +30,16 @@
 					<li><a href="${createLink(controller: 'logout')}"> Logout</a></li>
 				</sec:ifAllGranted>
 				<sec:ifAllGranted roles="ROLE_USER">
+					<li><a id="home-link" href="#"><g:message code="default.home.label"/></a></li>
 					<li><a href="${createLink(uri: '/cardapio')}">Cardápio</a></li>
 					<li><a href="${createLink(controller: 'logout')}"> Logout</a></li>
 				</sec:ifAllGranted>
+				<sec:ifNotLoggedIn>
+					<li><a id="home-link" href="#"><g:message code="default.home.label"/></a></li>
+					<li><g:link controller='login' action='auth'>Login</g:link></li>
+				</sec:ifNotLoggedIn>
 				<li><a id="city-search" href="${createLink(uri: '/home')}">Pesquisando em...</a></li>
+				
 			</ul>
 		</div>
 	   </div>
@@ -42,6 +48,12 @@
 		<div id="show-cardapio" class="content scaffold-show"  role="main">
 			<h1><g:message code="default.show.label" args="[entityName]" /></h1>
 			<sec:ifAllGranted roles="ROLE_ADMIN">
+				<div class="links">
+					<g:link  action="index"><g:message code="default.list.label" args="[entityName]" /></g:link>
+					<g:link  action="create"><g:message code="default.new.label" args="[entityName]" /></g:link>
+				</div>
+			</sec:ifAllGranted>
+			<sec:ifAllGranted roles="ROLE_USER">
 				<div class="links">
 					<g:link  action="index"><g:message code="default.list.label" args="[entityName]" /></g:link>
 					<g:link  action="create"><g:message code="default.new.label" args="[entityName]" /></g:link>
@@ -83,31 +95,58 @@
 				<li class="fieldcontain">
 					<span id="categoria-label" class="property-label"><g:message code="cardapio.categoria.label" default="Categoria"/>: </span>
 					
+					<sec:ifAllGranted roles="ROLE_ADMIN">
 						<span class="property-value" aria-labelledby="categoria-label"><g:link controller="categoria" action="show" id="${cardapioInstance?.categoria?.id}">${cardapioInstance?.categoria?.encodeAsHTML()}</g:link></span>
-					
+					</sec:ifAllGranted>
+					<sec:ifNotLoggedIn>
+						<span class="property-value" aria-labelledby="categoria-label">${cardapioInstance?.categoria?.encodeAsHTML()}</span>
+					</sec:ifNotLoggedIn>
+					<sec:ifAllGranted roles="ROLE_USER">
+						<span class="property-value" aria-labelledby="categoria-label">${cardapioInstance?.categoria?.encodeAsHTML()}</span>
+					</sec:ifAllGranted>
 				</li>
 				</g:if>
 			
 				<g:if test="${cardapioInstance?.estabelecimento}">
 				<li class="fieldcontain">
 					<span id="estabelecimento-label" class="property-label"><g:message code="cardapio.estabelecimento.label" default="Estabelecimento"/>: </span>
-					
+					<sec:ifAllGranted roles="ROLE_ADMIN">
 						<span class="property-value" aria-labelledby="estabelecimento-label"><g:link controller="estabelecimento" action="show" id="${cardapioInstance?.estabelecimento?.id}">${cardapioInstance?.estabelecimento?.encodeAsHTML()}</g:link></span>
-					
+					</sec:ifAllGranted>
+					<sec:ifNotLoggedIn>
+						<span class="property-value" aria-labelledby="estabelecimento-label">${cardapioInstance?.estabelecimento?.encodeAsHTML()}</span>
+					</sec:ifNotLoggedIn>
+					<sec:ifAllGranted roles="ROLE_USER">
+						<span class="property-value" aria-labelledby="estabelecimento-label">${cardapioInstance?.estabelecimento?.encodeAsHTML()}</span>
+					</sec:ifAllGranted>
 				</li>
 				</g:if>
 			
 				<g:if test="${cardapioInstance?.produto}">
 				<li class="fieldcontain">
 					<span id="produto-label" class="property-label"><g:message code="cardapio.produto.label" default="Produto"/>: </span>
-					
+					<sec:ifAllGranted roles="ROLE_ADMIN">
 						<span class="property-value" aria-labelledby="produto-label"><g:link controller="produto" action="show" id="${cardapioInstance?.produto?.id}">${cardapioInstance?.produto?.encodeAsHTML()}</g:link></span>
-					
+					</sec:ifAllGranted>
+					<sec:ifNotLoggedIn>
+						<span class="property-value" aria-labelledby="produto-label">${cardapioInstance?.produto?.encodeAsHTML()}</span>
+					</sec:ifNotLoggedIn>
+					<sec:ifAllGranted roles="ROLE_USER">
+						<span class="property-value" aria-labelledby="produto-label">${cardapioInstance?.produto?.encodeAsHTML()}</span>
+					</sec:ifAllGranted>
 				</li>
 				</g:if>
 			
 			</ol>
 			<sec:ifAllGranted roles="ROLE_ADMIN">
+				<g:form url="[resource:cardapioInstance, action:'delete']" method="DELETE">
+					<fieldset class="buttons">
+						<g:link class="edit" action="edit" resource="${cardapioInstance}"><g:message code="default.button.edit.label" default="Edit" /></g:link>
+						<g:actionSubmit class="delete" action="delete" value="${message(code: 'default.button.delete.label', default: 'Delete')}" onclick="return confirm('${message(code: 'default.button.delete.confirm.message', default: 'Are you sure?')}');" />
+					</fieldset>
+				</g:form>
+			</sec:ifAllGranted>
+			<sec:ifAllGranted roles="ROLE_USER">
 				<g:form url="[resource:cardapioInstance, action:'delete']" method="DELETE">
 					<fieldset class="buttons">
 						<g:link class="edit" action="edit" resource="${cardapioInstance}"><g:message code="default.button.edit.label" default="Edit" /></g:link>

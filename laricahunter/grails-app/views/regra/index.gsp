@@ -49,14 +49,16 @@
 					
 						<g:sortableColumn property="authority" title="${message(code: 'regra.authority.label', default: 'Authority')}" />
 					
+						<th>Ações</th>
 					</tr>
 				</thead>
 				<tbody>
 				<g:each in="${regraInstanceList}" status="i" var="regraInstance">
 					<tr class="${(i % 2) == 0 ? 'even' : 'odd'}">
 					
-						<td><g:link action="show" id="${regraInstance.id}">${fieldValue(bean: regraInstance, field: "authority")}</g:link></td>
+						<td>${fieldValue(bean: regraInstance, field: "authority")}</td>
 					
+						<td><g:link action="show" id="${regraInstance.id}">Acessar</g:link></td>	
 					</tr>
 				</g:each>
 				</tbody>

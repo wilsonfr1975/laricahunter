@@ -30,10 +30,16 @@
 					<li><a href="${createLink(controller: 'logout')}"> Logout</a></li>
 				</sec:ifAllGranted>
 				<sec:ifAllGranted roles="ROLE_USER">
+					<li><a id="home-link" href="#"><g:message code="default.home.label"/></a></li>
 					<li><a href="${createLink(uri: '/cardapio')}">Cardápio</a></li>
 					<li><a href="${createLink(controller: 'logout')}"> Logout</a></li>
 				</sec:ifAllGranted>
+				<sec:ifNotLoggedIn>
+					<li><a id="home-link" href="#"><g:message code="default.home.label"/></a></li>
+					<li><g:link controller='login' action='auth'>Login</g:link></li>
+				</sec:ifNotLoggedIn>
 				<li><a id="city-search" href="${createLink(uri: '/home')}">Pesquisando em...</a></li>
+				
 			</ul>
 		</div>
 	   </div>
@@ -42,7 +48,14 @@
 			<h1><g:message code="default.list.label" args="[entityName]" /></h1>
 			<sec:ifAllGranted roles="ROLE_ADMIN">
 				<div class="links">
+					<g:link  action="index"><g:message code="default.list.label" args="[entityName]" /></g:link>
 					<g:link action="create"><g:message code="default.new.label" args="[entityName]" /></g:link>
+				</div>
+			</sec:ifAllGranted>
+			<sec:ifAllGranted roles="ROLE_USER">
+				<div class="links">
+					<g:link  action="index"><g:message code="default.list.label" args="[entityName]" /></g:link>
+					<g:link  action="create"><g:message code="default.new.label" args="[entityName]" /></g:link>
 				</div>
 			</sec:ifAllGranted>
 			<g:if test="${flash.message}">
@@ -63,6 +76,8 @@
 						<th><g:message code="cardapio.estabelecimento.label" default="Estabelecimento" /></th>
 					
 						<th><g:message code="cardapio.produto.label" default="Produto" /></th>
+						
+						<th>Ações</th>
 					
 					</tr>
 				</thead>
@@ -70,7 +85,7 @@
 				<g:each in="${cardapioInstanceList}" status="i" var="cardapioInstance">
 					<tr class="${(i % 2) == 0 ? 'even' : 'odd'}">
 					
-						<td><g:link action="show" id="${cardapioInstance.id}">${fieldValue(bean: cardapioInstance, field: "preco")}</g:link></td>
+						<td>${fieldValue(bean: cardapioInstance, field: "preco")}</td>
 					
 						<td>${fieldValue(bean: cardapioInstance, field: "descricao")}</td>
 					
@@ -84,6 +99,8 @@
 					
 						<td>${fieldValue(bean: cardapioInstance, field: "produto")}</td>
 					
+						<td><g:link action="show" id="${cardapioInstance.id}">Acessar</g:link></td>
+						
 					</tr>
 				</g:each>
 				</tbody>

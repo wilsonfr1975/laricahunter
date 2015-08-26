@@ -50,6 +50,8 @@
 						<g:sortableColumn property="sigla" title="${message(code: 'uf.sigla.label', default: 'Sigla')}" />
 					
 						<g:sortableColumn property="nome" title="${message(code: 'uf.nome.label', default: 'Nome')}" />
+						
+						<th>Ações</th>
 					
 					</tr>
 				</thead>
@@ -57,10 +59,11 @@
 				<g:each in="${ufInstanceList}" status="i" var="ufInstance">
 					<tr class="${(i % 2) == 0 ? 'even' : 'odd'}">
 					
-						<td><g:link action="show" id="${ufInstance.id}">${fieldValue(bean: ufInstance, field: "sigla")}</g:link></td>
+						<td>${fieldValue(bean: ufInstance, field: "sigla")}</td>
 					
 						<td>${fieldValue(bean: ufInstance, field: "nome")}</td>
 					
+						<td><g:link action="show" id="${ufInstance.id}">Acessar</g:link></td>
 					</tr>
 				</g:each>
 				</tbody>

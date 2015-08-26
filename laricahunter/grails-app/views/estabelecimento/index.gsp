@@ -57,16 +57,16 @@
 						<g:sortableColumn property="logradouro" title="${message(code: 'estabelecimento.logradouro.label', default: 'Logradouro')}" />
 					
 						<g:sortableColumn property="numero" title="${message(code: 'estabelecimento.numero.label', default: 'Numero')}" />
-					
-						<g:sortableColumn property="complemento" title="${message(code: 'estabelecimento.complemento.label', default: 'Complemento')}" />
-					
+
+						<th>Ações</th>
+						
 					</tr>
 				</thead>
 				<tbody>
 				<g:each in="${estabelecimentoInstanceList}" status="i" var="estabelecimentoInstance">
 					<tr class="${(i % 2) == 0 ? 'even' : 'odd'}">
 					
-						<td><g:link action="show" id="${estabelecimentoInstance.id}">${fieldValue(bean: estabelecimentoInstance, field: "cnpj")}</g:link></td>
+						<td>${fieldValue(bean: estabelecimentoInstance, field: "cnpj")}</td>
 					
 						<td>${fieldValue(bean: estabelecimentoInstance, field: "razaosocial")}</td>
 					
@@ -76,7 +76,8 @@
 					
 						<td>${fieldValue(bean: estabelecimentoInstance, field: "numero")}</td>
 					
-						<td>${fieldValue(bean: estabelecimentoInstance, field: "complemento")}</td>
+						<td><g:link action="show" id="${estabelecimentoInstance.id}">Acessar</g:link></td>
+					
 					
 					</tr>
 				</g:each>

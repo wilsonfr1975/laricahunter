@@ -58,6 +58,8 @@
 						<g:sortableColumn property="enabled" title="${message(code: 'usuario.enabled.label', default: 'Enabled')}" />
 					
 						<th><g:message code="usuario.estabelecimento.label" default="Estabelecimento" /></th>
+						
+						<th>Ações</th>
 					
 					</tr>
 				</thead>
@@ -65,7 +67,7 @@
 				<g:each in="${usuarioInstanceList}" status="i" var="usuarioInstance">
 					<tr class="${(i % 2) == 0 ? 'even' : 'odd'}">
 					
-						<td><g:link action="show" id="${usuarioInstance.id}">${fieldValue(bean: usuarioInstance, field: "username")}</g:link></td>
+						<td>${fieldValue(bean: usuarioInstance, field: "username")}</td>
 					
 						<td>${fieldValue(bean: usuarioInstance, field: "password")}</td>
 					
@@ -76,6 +78,8 @@
 						<td><g:formatBoolean boolean="${usuarioInstance.enabled}" /></td>
 					
 						<td>${fieldValue(bean: usuarioInstance, field: "estabelecimento")}</td>
+						
+						<td><g:link action="show" id="${usuarioInstance.id}">Acessar</g:link></td>
 					
 					</tr>
 				</g:each>

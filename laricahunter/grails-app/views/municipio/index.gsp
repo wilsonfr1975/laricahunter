@@ -53,16 +53,18 @@
 					
 						<th><g:message code="municipio.uf.label" default="Uf" /></th>
 					
+						<th>Ações</th>
 					</tr>
 				</thead>
 				<tbody>
 				<g:each in="${municipioInstanceList}" status="i" var="municipioInstance">
 					<tr class="${(i % 2) == 0 ? 'even' : 'odd'}">
 					
-						<td><g:link action="show" id="${municipioInstance.id}">${fieldValue(bean: municipioInstance, field: "nome")}</g:link></td>
+						<td>${fieldValue(bean: municipioInstance, field: "nome")}</td>
 					
 						<td>${fieldValue(bean: municipioInstance, field: "uf")}</td>
 					
+						<td><g:link action="show" id="${municipioInstance.id}">Acessar</g:link></td>
 					</tr>
 				</g:each>
 				</tbody>

@@ -1,4 +1,5 @@
 <%@ page import="laricahunter.Cardapio" %>
+<%@ page import="seguranca.Usuario" %>
 
 
 
@@ -38,14 +39,15 @@
 
 </div>
 
-<div class="fieldcontain ${hasErrors(bean: cardapioInstance, field: 'estabelecimento', 'error')} required">
-	<label for="estabelecimento">
-		<g:message code="cardapio.estabelecimento.label" default="Estabelecimento" />
-		<span class="required-indicator">*</span>
-	</label>
-	<g:select id="estabelecimento" name="estabelecimento.id" from="${laricahunter.Estabelecimento.list()}" optionKey="id" required="" value="${cardapioInstance?.estabelecimento?.id}" class="many-to-one"/>
-
-</div>
+<sec:ifAllGranted roles="ROLE_ADMIN">
+	<div class="fieldcontain ${hasErrors(bean: cardapioInstance, field: 'estabelecimento', 'error')} required">
+		<label for="estabelecimento">
+			<g:message code="cardapio.estabelecimento.label" default="Estabelecimento" />
+			<span class="required-indicator">*</span>
+		</label>
+		<g:select id="estabelecimento" name="estabelecimento.id" from="${laricahunter.Estabelecimento.list()}" optionKey="id" required="" value="${cardapioInstance?.estabelecimento?.id}" class="many-to-one"/>
+	</div>
+</sec:ifAllGranted>
 
 <div class="fieldcontain ${hasErrors(bean: cardapioInstance, field: 'produto', 'error')} required">
 	<label for="produto">

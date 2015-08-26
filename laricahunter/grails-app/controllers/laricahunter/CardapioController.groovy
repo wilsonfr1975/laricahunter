@@ -4,26 +4,53 @@ import grails.plugin.springsecurity.annotation.Secured
 
 import static org.springframework.http.HttpStatus.*
 import grails.transaction.Transactional
+import seguranca.*
+
 @Secured(['ROLE_USER','ROLE_ADMIN'])
 @Transactional(readOnly = true)
 class CardapioController {
 
     static allowedMethods = [save: "POST", update: "POST", delete: "DELETE"]
 
+    def springSecurityService
+    Usuario usuario
+    UsuarioRegra ur
+    
     @Secured(['permitAll']) 
     def index(Integer max) {
-        
-        
-        if (params.id != null){
-            Estabelecimento p = Estabelecimento.find { id == params.id }
-            params.max = Math.min(max ?: 10, 100)
-            respond Cardapio.findAllByEstabelecimento(p), model:[cardapioInstanceCount: Cardapio.count()]                        
-        }   
-        else{
-            params.max = Math.min(max ?: 10, 100)
-            respond Cardapio.list(params), model:[cardapioInstanceCount: Cardapio.count()]
-        }
+        //pega usuario logado
+        usuario = springSecurityService.currentUser
+
+        if (usuario != null) {
+            //busca as regras
+            ur = UsuarioRegra.findByUsuario(usuario);
+      
+            if (ur.regra.authority == 'ROLE_USER') {
+                //busca somente o estabelecimento do usuario logado
+                Estabelecimento p = Estabelecimento.find { id == usuario.estabelecimento.id }
+                params.max = Math.min(max ?: 10, 100)
+                respond Cardapio.findAllByEstabelecimento(p), model:[cardapioInstanceCount: Cardapio.count()]
+            }else{
+                //admin traz todos
+                params.max = Math.min(max ?: 10, 100)
+                respond Cardapio.list(params), model:[cardapioInstanceCount: Cardapio.count()]
+                
+            }    
+            
+        } else {
+
+            if (params.id != null) {
+                Estabelecimento p = Estabelecimento.find { id == params.id }
+                params.max = Math.min(max ?: 10, 100)
+                respond Cardapio.findAllByEstabelecimento(p), model: [cardapioInstanceCount: Cardapio.count()]
+            }   
+            else{
+                params.max = Math.min(max ?: 10, 100)
+                respond Cardapio.list(params), model:[cardapioInstanceCount: Cardapio.count()]
+            }
+        }    
     }
+    
     @Secured(['permitAll'])    
     def show(Cardapio cardapioInstance) {
         respond cardapioInstance
@@ -36,6 +63,7 @@ class CardapioController {
         response.outputStream << image
     }
 
+
     def create() {
         respond new Cardapio(params)
     }
@@ -47,10 +75,27 @@ class CardapioController {
             return
         }
 
-        if (cardapioInstance.hasErrors()) {
-            respond cardapioInstance.errors, view:'create'
-            return
+
+        usuario = springSecurityService.currentUser
+
+        if (usuario != null) {
+            //busca as regras
+            ur = UsuarioRegra.findByUsuario(usuario);
+        
+              if (ur.regra.authority == 'ROLE_USER') {
+                //busca somente o estabelecimento do usuario logado
+                Estabelecimento p = Estabelecimento.find { id == usuario.estabelecimento.id }
+                cardapioInstance.estabelecimento = p;
+            }else{
+                 if (cardapioInstance.hasErrors()) {
+                    respond cardapioInstance.errors, view:'create'
+                    return
+                }
+            }
         }
+
+
+       
 
         cardapioInstance.save flush:true
 

@@ -52,15 +52,19 @@
 					
 						<th><g:message code="pratoTipico.produto.label" default="Produto" /></th>
 					
+						<th>Ações</th>
+						
 					</tr>
 				</thead>
 				<tbody>
 				<g:each in="${pratoTipicoInstanceList}" status="i" var="pratoTipicoInstance">
 					<tr class="${(i % 2) == 0 ? 'even' : 'odd'}">
 					
-						<td><g:link action="show" id="${pratoTipicoInstance.id}">${fieldValue(bean: pratoTipicoInstance, field: "municipio")}</g:link></td>
+						<td>${fieldValue(bean: pratoTipicoInstance, field: "municipio")}</td>
 					
 						<td>${fieldValue(bean: pratoTipicoInstance, field: "produto")}</td>
+						
+						<td><g:link action="show" id="${pratoTipicoInstance.id}">Acessar</g:link></td>
 					
 					</tr>
 				</g:each>

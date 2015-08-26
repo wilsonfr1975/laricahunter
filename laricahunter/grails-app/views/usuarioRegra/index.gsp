@@ -50,6 +50,8 @@
 						<th><g:message code="usuarioRegra.regra.label" default="Regra" /></th>
 					
 						<th><g:message code="usuarioRegra.usuario.label" default="Usuario" /></th>
+						
+						<th>Ações</th>
 					
 					</tr>
 				</thead>
@@ -57,9 +59,11 @@
 				<g:each in="${usuarioRegraInstanceList}" status="i" var="usuarioRegraInstance">
 					<tr class="${(i % 2) == 0 ? 'even' : 'odd'}">
 					
-						<td><g:link action="show" id="${usuarioRegraInstance.id}">${fieldValue(bean: usuarioRegraInstance, field: "regra")}</g:link></td>
+						<td>${fieldValue(bean: usuarioRegraInstance, field: "regra")}</td>
 					
 						<td>${fieldValue(bean: usuarioRegraInstance, field: "usuario")}</td>
+						
+						<td><g:link action="show" id="${usuarioRegraInstance.id}">Acessar</g:link></td>
 					
 					</tr>
 				</g:each>

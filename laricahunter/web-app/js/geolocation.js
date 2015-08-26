@@ -66,6 +66,6 @@ $(document).ready(function() {
         });
     }
     else {
-        $("#city-search").html("Cidade: " + cookie + ". Alterar?");
+        $("#city-search").html("Cidade: " + cookie + ". Mudar?");
     }
 });

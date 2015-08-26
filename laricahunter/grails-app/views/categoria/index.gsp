@@ -49,6 +49,7 @@
 					<tr>
 					
 						<g:sortableColumn property="nome" title="${message(code: 'categoria.nome.label', default: 'Nome')}" />
+						<th>Ações</th>
 					
 					</tr>
 				</thead>
@@ -56,8 +57,8 @@
 				<g:each in="${categoriaInstanceList}" status="i" var="categoriaInstance">
 					<tr class="${(i % 2) == 0 ? 'even' : 'odd'}">
 					
-						<td><g:link action="show" id="${categoriaInstance.id}">${fieldValue(bean: categoriaInstance, field: "nome")}</g:link></td>
-					
+						<td>${fieldValue(bean: categoriaInstance, field: "nome")}</td>
+						<td><g:link action="show" id="${categoriaInstance.id}">Acessar</g:link></td>
 					</tr>
 				</g:each>
 				</tbody>
