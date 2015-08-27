@@ -131,7 +131,7 @@ header {
     margin-left:0px;
 }
 
-.property-label{font-size: 12px;font-weight: bold;padding-left: 15px;padding-right: 3px; line-height: 20px;}
+.property-label{font-size: 14px;font-weight: bold;padding-left: 15px;padding-right: 3px; line-height: 20px;}
 .delete{
     text-transform: uppercase;
     font-size: 14px;
