@@ -83,7 +83,6 @@ header {
 
 
 .scaffold-create{
-    height:60px;
     font-size: 12px;
     text-align:left;
     line-height: 18px;
@@ -160,7 +159,7 @@ table tr th{
 
 }
 
-#grailsLogo{display: none;}
+#grailsLogo{text-align: center;}
 
 .create{font-size: 15px;
     line-height: 30px;}

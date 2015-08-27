@@ -5,6 +5,11 @@ $(document).ready(function() {
         window.location.assign("/laricahunter");
     });
     
+    $("#home-link2").click(function() {
+        var cookie = Cookies.get('city');
+        window.location.assign("/home/index?city="+cookie);
+    });
+
     $("#home-link").click(function() {
         var cookie = Cookies.get('city');
         window.location.assign("/home/index?city="+cookie);

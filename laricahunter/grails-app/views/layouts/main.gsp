@@ -26,10 +26,50 @@
 		<r:layoutResources />
 	</head>
 	<body>
-		<div id="grailsLogo" role="banner"><a href="http://grails.org"><img src="${resource(dir: 'images', file: 'logo-larica-hunter.png')}" alt="Grails"/></a></div>
+		
+		<nav class="navbar navbar-default">
+		  <div class="container-fluid">
+		    <div class="navbar-header">
+		      <a class="navbar-brand" id="home-link2" href="#">Larica Hunter</a>
+		    </div>
+			<div >
+				<ul class="nav navbar-nav">
+			        <sec:ifAllGranted roles="ROLE_ADMIN">
+			        	<li><a id="home-link" href="#">Principal</a></li>
+						<li><a href="${createLink(uri: '/estabelecimento')}">Estabelecimento</a></li>
+						<li><a href="${createLink(uri: '/categoria')}">Categoria</a></li>
+						<li><a href="${createLink(uri: '/cardapio')}">Cardápio</a></li>
+						<li><a href="${createLink(uri: '/pratoTipico')}">PratoTipico</a></li>
+						<li><a href="${createLink(uri: '/produto')}">Produto</a></li>
+						<li><a href="${createLink(uri: '/municipio')}">Municipio</a></li>
+						<li><a href="${createLink(uri: '/uf')}">UF</a></li>
+						<li><a href="${createLink(uri: '/usuario')}">Usuário</a></li>
+						<li><a href="${createLink(uri: '/regra')}">Regra</a></li>
+						<li><a href="${createLink(uri: '/usuarioRegra')}">UsuarioRegra</a></li>
+						<li><a href="${createLink(controller: 'logout')}"> Logout</a></li>
+					</sec:ifAllGranted>
+					<sec:ifAllGranted roles="ROLE_USER">
+						<li><a id="home-link" href="#">Principal</a></li>
+						<li><a href="${createLink(uri: '/cardapio')}">Cardápio</a></li>
+						<li><a href="${createLink(controller: 'logout')}"> Logout</a></li>
+					</sec:ifAllGranted>
+					<sec:ifNotLoggedIn>
+						<li><a id="home-link" href="#">Principal</a></li>
+						<li><g:link controller='login' action='auth'>Login</g:link></li>
+					</sec:ifNotLoggedIn>
+					<li><a id="city-search" href="${createLink(uri: '/home')}">Cidade: </a></li>
+					
+				</ul>
+			</div>
+		   </div>
+		</nav>	
+		
+		<div id="grailsLogo" role="banner"><a href="http://radiant-stream-1034.herokuapp.com/"><img src="${resource(dir: 'images', file: 'logo-larica-hunter.png')}" alt="Larica Hunter"/></a></div>
+
 		<g:layoutBody/>
-		<div class="footer" role="contentinfo"></div>
+		<div class="footer" style="border-top: 1px solid #53777a; padding-top: 10px;" role="contentinfo"><center><p>Equipe Larica Hunter - 2015</p></center></div>
 		<div id="spinner" class="spinner" style="display:none;"><g:message code="spinner.alt" default="Loading&hellip;"/></div>
 		<r:layoutResources />
 	</body>
+	
 </html>

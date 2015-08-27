@@ -7,43 +7,8 @@
 		<title>Larica Hunter - Grails</title>
 	</head>
 	<body>
-	<nav class="navbar navbar-default">
-	  <div class="container-fluid">
-	    <div class="navbar-header">
-	      <a class="navbar-brand" href="#">Larica Hunter</a>
-	    </div>
-	    <div>
-	     	<ul class="nav navbar-nav">
-		        
-		        <sec:ifAllGranted roles="ROLE_ADMIN">
-		        	<li><a id="home-link" href="#"><g:message code="default.home.label"/></a></li>
-					<li><a href="${createLink(uri: '/estabelecimento')}">Estabelecimento</a></li>
-					<li><a href="${createLink(uri: '/categoria')}">Categoria</a></li>
-					<li><a href="${createLink(uri: '/cardapio')}">Cardápio</a></li>
-					<li><a href="${createLink(uri: '/pratoTipico')}">PratoTipico</a></li>
-					<li><a href="${createLink(uri: '/produto')}">Produto</a></li>
-					<li><a href="${createLink(uri: '/municipio')}">Municipio</a></li>
-					<li><a href="${createLink(uri: '/uf')}">UF</a></li>
-					<li><a href="${createLink(uri: '/usuario')}">Usuário</a></li>
-					<li><a href="${createLink(uri: '/regra')}">Regra</a></li>
-					<li><a href="${createLink(uri: '/usuarioRegra')}">UsuarioRegra</a></li>
-					<li><a href="${createLink(controller: 'logout')}"> Logout</a></li>
-				</sec:ifAllGranted>
-				<sec:ifAllGranted roles="ROLE_USER">
-					<li><a id="home-link" href="#"><g:message code="default.home.label"/></a></li>
-					<li><a href="${createLink(uri: '/cardapio')}">Cardápio</a></li>
-					<li><a href="${createLink(controller: 'logout')}"> Logout</a></li>
-				</sec:ifAllGranted>
-				<sec:ifNotLoggedIn>
-					<li><a id="home-link" href="#"><g:message code="default.home.label"/></a></li>
-					<li><g:link controller='login' action='auth'>Login</g:link></li>
-				</sec:ifNotLoggedIn>
-				<li><a id="city-search" href="${createLink(uri: '/home')}">Pesquisando em...</a></li>
-	      	</ul>
-	    </div>
-	  </div>
-	</nav>
-		<div id="list-home" class="container" style="margin-top:50px;">
+
+		<div id="list-home" class="container" style="margin-top:10px;">
 				<div class="well" background:#F5F5F5;">
                 	<center>
                 		<h3 style="padding-bottom:10px;">ÁREA DE BUSCA</h3>
