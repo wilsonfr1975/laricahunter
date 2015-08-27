@@ -29,9 +29,6 @@
 		
 		<nav class="navbar navbar-default">
 		  <div class="container-fluid">
-		    <div class="navbar-header">
-		      <a class="navbar-brand" id="home-link2" href="#">Larica Hunter</a>
-		    </div>
 			<div >
 				<ul class="nav navbar-nav">
 			        <sec:ifAllGranted roles="ROLE_ADMIN">
@@ -64,7 +61,7 @@
 		   </div>
 		</nav>	
 		
-		<div id="grailsLogo" role="banner"><a href="http://radiant-stream-1034.herokuapp.com/"><img src="${resource(dir: 'images', file: 'logo-larica-hunter.png')}" alt="Larica Hunter"/></a></div>
+		<div id="grailsLogo" role="banner"><a id="home-link2" href="#"><img src="${resource(dir: 'images', file: 'logo-larica-hunter.png')}" alt="Larica Hunter"/></a></div>
 
 		<g:layoutBody/>
 		<div class="footer" style="border-top: 1px solid #53777a; padding-top: 10px;" role="contentinfo"><center><p>Equipe Larica Hunter - 2015</p></center></div>
