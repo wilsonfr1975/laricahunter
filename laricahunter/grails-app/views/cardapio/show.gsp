@@ -29,22 +29,7 @@
 			</g:if>
 			<ol class="property-list cardapio">
 			
-				<g:if test="${cardapioInstance?.preco}">
-				<li class="fieldcontain">
-					<span id="preco-label" class="property-label"><g:message code="cardapio.preco.label" default="Preco"/>: </span>
-					
-						<span class="property-value" aria-labelledby="preco-label"><g:fieldValue bean="${cardapioInstance}" field="preco"/></span>
-				</li>
-				</g:if>
-			
-				<g:if test="${cardapioInstance?.descricao}">
-				<li class="fieldcontain">
-					<span id="descricao-label" class="property-label"><g:message code="cardapio.descricao.label" default="Descricao"/>: </span>
-					
-						<span class="property-value" aria-labelledby="descricao-label"><g:fieldValue bean="${cardapioInstance}" field="descricao"/></span>
-					
-				</li>
-				</g:if>
+			 
 			
 				<g:if test="${cardapioInstance?.avatar}">
 				<li class="fieldcontain">
@@ -54,7 +39,7 @@
 					</div>
 				</li>
 				</g:if>
-			
+				
 				<g:if test="${cardapioInstance?.categoria}">
 				<li class="fieldcontain">
 					<span id="categoria-label" class="property-label"><g:message code="cardapio.categoria.label" default="Categoria"/>: </span>
@@ -68,6 +53,30 @@
 					<sec:ifAllGranted roles="ROLE_USER">
 						<span class="property-value" aria-labelledby="categoria-label">${cardapioInstance?.categoria?.encodeAsHTML()}</span>
 					</sec:ifAllGranted>
+				</li>
+				</g:if>
+				
+					<g:if test="${cardapioInstance?.produto}">
+				<li class="fieldcontain">
+					<span id="produto-label" class="property-label"><g:message code="cardapio.produto.label" default="Produto"/>: </span>
+					<sec:ifAllGranted roles="ROLE_ADMIN">
+						<span class="property-value" aria-labelledby="produto-label"><g:link controller="produto" action="show" id="${cardapioInstance?.produto?.id}">${cardapioInstance?.produto?.encodeAsHTML()}</g:link></span>
+					</sec:ifAllGranted>
+					<sec:ifNotLoggedIn>
+						<span class="property-value" aria-labelledby="produto-label">${cardapioInstance?.produto?.encodeAsHTML()}</span>
+					</sec:ifNotLoggedIn>
+					<sec:ifAllGranted roles="ROLE_USER">
+						<span class="property-value" aria-labelledby="produto-label">${cardapioInstance?.produto?.encodeAsHTML()}</span>
+					</sec:ifAllGranted>
+				</li>
+				</g:if>
+			
+				<g:if test="${cardapioInstance?.descricao}">
+				<li class="fieldcontain">
+					<span id="descricao-label" class="property-label"><g:message code="cardapio.descricao.label" default="Descricao"/>: </span>
+					
+						<span class="property-value" aria-labelledby="descricao-label"><g:fieldValue bean="${cardapioInstance}" field="descricao"/></span>
+					
 				</li>
 				</g:if>
 			
@@ -85,21 +94,17 @@
 					</sec:ifAllGranted>
 				</li>
 				</g:if>
-			
-				<g:if test="${cardapioInstance?.produto}">
+				
+				
+				<g:if test="${cardapioInstance?.preco}">
 				<li class="fieldcontain">
-					<span id="produto-label" class="property-label"><g:message code="cardapio.produto.label" default="Produto"/>: </span>
-					<sec:ifAllGranted roles="ROLE_ADMIN">
-						<span class="property-value" aria-labelledby="produto-label"><g:link controller="produto" action="show" id="${cardapioInstance?.produto?.id}">${cardapioInstance?.produto?.encodeAsHTML()}</g:link></span>
-					</sec:ifAllGranted>
-					<sec:ifNotLoggedIn>
-						<span class="property-value" aria-labelledby="produto-label">${cardapioInstance?.produto?.encodeAsHTML()}</span>
-					</sec:ifNotLoggedIn>
-					<sec:ifAllGranted roles="ROLE_USER">
-						<span class="property-value" aria-labelledby="produto-label">${cardapioInstance?.produto?.encodeAsHTML()}</span>
-					</sec:ifAllGranted>
+					<span id="preco-label" class="property-label"><g:message code="cardapio.preco.label" default="Preco"/>: </span>
+					
+						<span class="property-value" aria-labelledby="preco-label">R$ <g:fieldValue bean="${cardapioInstance}" field="preco"/></span>
 				</li>
 				</g:if>
+			
+			
 			
 			</ol>
 			<sec:ifAllGranted roles="ROLE_ADMIN">

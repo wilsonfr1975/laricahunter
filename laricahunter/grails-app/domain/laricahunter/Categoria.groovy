@@ -6,6 +6,10 @@ class Categoria {
         nome(blank: false)
     }
 
+    static mapping = {
+        sort "nome"
+    }
+    
     String toString() {
         return this.nome;
     }

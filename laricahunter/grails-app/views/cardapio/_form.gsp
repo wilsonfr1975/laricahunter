@@ -2,25 +2,6 @@
 <%@ page import="seguranca.Usuario" %>
 
 
-
-<div class="fieldcontain ${hasErrors(bean: cardapioInstance, field: 'preco', 'error')} required">
-	<label for="preco">
-		<g:message code="cardapio.preco.label" default="Preco" />
-		<span class="required-indicator">*</span>
-	</label>
-	<g:field name="preco" value="${fieldValue(bean: cardapioInstance, field: 'preco')}" required=""/>
-
-</div>
-
-<div class="fieldcontain ${hasErrors(bean: cardapioInstance, field: 'descricao', 'error')} required">
-	<label for="descricao">
-		<g:message code="cardapio.descricao.label" default="Descricao" />
-		<span class="required-indicator">*</span>
-	</label>
-	<g:textField name="descricao" required="" value="${cardapioInstance?.descricao}"/>
-
-</div>
-
 <div class="fieldcontain ${hasErrors(bean: cardapioInstance, field: 'avatar', 'error')} required">
 	<label for="avatar">
 		<g:message code="cardapio.avatar.label" default="Avatar" />
@@ -39,6 +20,25 @@
 
 </div>
 
+<div class="fieldcontain ${hasErrors(bean: cardapioInstance, field: 'produto', 'error')} required">
+	<label for="produto">
+		<g:message code="cardapio.produto.label" default="Produto" />
+		<span class="required-indicator">*</span>
+	</label>
+	<g:select id="produto" name="produto.id" from="${laricahunter.Produto.list()}" optionKey="id" required="" value="${cardapioInstance?.produto?.id}" class="many-to-one"/>
+
+</div>
+
+<div class="fieldcontain ${hasErrors(bean: cardapioInstance, field: 'descricao', 'error')} required">
+	<label for="descricao">
+		<g:message code="cardapio.descricao.label" default="Descricao" />
+		<span class="required-indicator">*</span>
+	</label>
+	<g:textField name="descricao" required="" value="${cardapioInstance?.descricao}"/>
+
+</div>
+
+
 <sec:ifAllGranted roles="ROLE_ADMIN">
 	<div class="fieldcontain ${hasErrors(bean: cardapioInstance, field: 'estabelecimento', 'error')} required">
 		<label for="estabelecimento">
@@ -49,12 +49,12 @@
 	</div>
 </sec:ifAllGranted>
 
-<div class="fieldcontain ${hasErrors(bean: cardapioInstance, field: 'produto', 'error')} required">
-	<label for="produto">
-		<g:message code="cardapio.produto.label" default="Produto" />
+
+<div class="fieldcontain ${hasErrors(bean: cardapioInstance, field: 'preco', 'error')} required">
+	<label for="preco">
+		<g:message code="cardapio.preco.label" default="Preco" />
 		<span class="required-indicator">*</span>
 	</label>
-	<g:select id="produto" name="produto.id" from="${laricahunter.Produto.list()}" optionKey="id" required="" value="${cardapioInstance?.produto?.id}" class="many-to-one"/>
+	<g:field name="preco" value="${fieldValue(bean: cardapioInstance, field: 'preco')}" required=""/>
 
 </div>
-

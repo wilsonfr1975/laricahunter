@@ -45,6 +45,8 @@
 										<h10><strong>Endereço: ${estabelecimentoInstance.logradouro} - ${estabelecimentoInstance.numero} - CEP: ${estabelecimentoInstance.cep}</strong></h10>
 										<br>
 										<h10><strong>Atendimento: <g:formatDate date="${estabelecimentoInstance?.horaabertura}" type="time" style="SHORT"/> até <g:formatDate date="${estabelecimentoInstance?.horafechamento}" type="time" style="SHORT"/></strong></h10>
+										<br>
+										<h10><strong>Município: ${estabelecimentoInstance?.municipio.nome}</strong></h10>
 									</center>
 								</div>	
 							</div>

@@ -19,6 +19,9 @@ class Estabelecimento {
     static belongsTo = [municipio: Municipio]
     //static belongsTo = [user: municipio]
 
+    static mapping = {
+        sort "nomefantasia"
+    }
 
     static constraints = {
         cnpj(blank: false)
